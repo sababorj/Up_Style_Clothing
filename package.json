@@ -1,0 +1,20 @@
+{
+  "name": "Up_Style_Clothing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sababorj/Up_Style_Clothing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sababorj/Up_Style_Clothing/issues"
+  },
+  "homepage": "https://github.com/sababorj/Up_Style_Clothing#readme"
+}
