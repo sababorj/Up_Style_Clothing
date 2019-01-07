@@ -22,6 +22,9 @@
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.6.4",
     "sequelize": "^4.42.0",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2"
   }
 }

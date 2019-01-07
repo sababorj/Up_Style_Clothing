@@ -8,7 +8,7 @@ module_exports = function(sequelize, DataType) {
             type: Sequelize.STRING, 
             allowNull: false 
         },
-        heigth: {
+        height: {
             type: Sequelize.STRING, 
             allowNull: false 
         },
@@ -39,6 +39,7 @@ module_exports = function(sequelize, DataType) {
         brand: {
             type: Sequelize.STRING, 
             allowNull: false 
-        }
+        },
+        description : sequelize.TEXT
     })
 }
