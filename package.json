@@ -25,6 +25,11 @@
     "sequelize-cli": "^5.4.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2"
+    "eslint-plugin-prettier": "^2.6.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "dotenv": "^6.0.0",
+    "express-session": "^1.15.6"
   }
 }
