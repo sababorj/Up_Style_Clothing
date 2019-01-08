@@ -4,8 +4,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var db = require('../models');
 
 passport.use(
-    new LocalStrategy(
-        {
+    new LocalStrategy({
             usernameField: "email"
         },
         function (email, passsword, done) {
@@ -18,8 +17,7 @@ passport.use(
                     return done(null, false, {
                         message: "This Email is not registered with us!"
                     });
-                }
-                else if (!dbUser.validPassword(password)) {
+                } else if (!dbUser.validPassword(password)) {
                     return done(null, false, {
                         message: "Worng Password! try again."
                     });
