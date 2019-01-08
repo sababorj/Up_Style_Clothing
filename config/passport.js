@@ -1,25 +1,23 @@
-var passport =  require('passport');
+var passport = require('passport');
 var LocatStrategy = require('passport-local').Strategy;
 
 var db = require('../models');
 
 passport.use(
-    new localStorage(
-        {
+    new LocatStrategy({
             usernameField: "email"
         },
-        function(email, passsword, done) {
+        function (email, passsword, done) {
             db.User.findOne({
-                Where:{
+                Where: {
                     email: email
                 }
-            }).then( function(dbUser){
-                if(!dbUser){
+            }).then(function (dbUser) {
+                if (!dbUser) {
                     return done(null, false, {
                         message: "This Email is not registered with us!"
                     });
-                }
-                else if (!dbUser.validPassword(password)){
+                } else if (!dbUser.validPassword(password)) {
                     return done(null, false, {
                         message: "Worng Password! try again."
                     });
@@ -30,11 +28,11 @@ passport.use(
     )
 );
 
-passport.serializeUser(function(user, callback) {
+passport.serializeUser(function (user, callback) {
     callback(null, user);
 });
 
-passport.deserializeUser(function(obj, callback) {
+passport.deserializeUser(function (obj, callback) {
     callback(null, obj);
 });
 
