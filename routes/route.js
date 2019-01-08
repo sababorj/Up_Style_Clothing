@@ -1,3 +1,6 @@
+var authenticated = require('../config/middleware/authenticated');
+var passport = require('../config/passport');
+
 var express = require("express");
 var router = express.Router();
 var db = require('../models');
@@ -24,9 +27,33 @@ router.get('/', function (req, res) {
             results: data
         });
     })
+});
+router.get('/login', function (req, res) {
+    res.render('login');
+
+});
+router.get('/register', function (req, res) {
+
+    res.render('register');
+
+});
+router.post('/register', function (req, res) {
+    var user = req.body.email;
+    var password = req.body.password;
+    db.User.create({
+        email: user,
+        password: password
+    }).then(response => {
+        if (response) {
+            res.render("preferences", {
+                email: req.body.email
+            })
+        }
+    })
 
 
 });
+
 
 
 
