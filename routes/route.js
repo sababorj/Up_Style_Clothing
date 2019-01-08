@@ -37,6 +37,11 @@ router.get('/register', function (req, res) {
     res.render('register');
 
 });
+router.get('/preferences', function (req, res) {
+
+    res.render('preferences');
+
+});
 router.post('/register', function (req, res) {
     var user = req.body.email;
     var password = req.body.password;

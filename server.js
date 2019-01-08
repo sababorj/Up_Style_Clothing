@@ -1,4 +1,3 @@
-
 // setting up  the express app
 var express = require('express');
 var exphbs = require("express-handlebars");
@@ -7,12 +6,14 @@ var app = express();
 // set local library and variables
 var db = require('./models');
 var port = process.env.port || 8080;
-var syncOptions = { 
+var syncOptions = {
     force: false
- };
+};
 
 // set up the middleware
-app.use(express.urlencoded({ extended : true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -27,11 +28,11 @@ app.set("view engine", "handlebars");
 
 //require routes
 var routes = require('./routes/route');
-app.use('/',routes);
+app.use('/', routes);
 
 
-db.sequelize.sync(syncOptions).then( ()=> {
-    app.listen( port, () => {
+db.sequelize.sync(syncOptions).then(() => {
+    app.listen(port, () => {
         console.log(`Listening to post ${port}`);
     });
 });
