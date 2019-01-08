@@ -25,8 +25,12 @@ app.engine(
     })
 );
 app.set("view engine", "handlebars");
-var routes = require("./routes/route");
-app.use("/", routes);
+
+//require routes
+var routes = require('./routes/route');
+app.use('/', routes);
+
+
 db.sequelize.sync(syncOptions).then(() => {
     app.listen(port, () => {
         console.log(`Listening to post ${port}`);

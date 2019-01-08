@@ -1,10 +1,10 @@
 var passport = require('passport');
-var LocatStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 var db = require('../models');
 
 passport.use(
-    new LocatStrategy({
+    new LocalStrategy({
             usernameField: "email"
         },
         function (email, passsword, done) {
