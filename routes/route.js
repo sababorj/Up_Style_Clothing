@@ -45,7 +45,7 @@ router.post('/register', function (req, res) {
         password: password
     }).then(response => {
         if (response) {
-            res.render("/preferences", {
+            res.render("preferences", {
                 email: req.body.email
             })
         }
