@@ -10,6 +10,7 @@
     grid-template-rows: 30px;
     grid-template-areas:
         'pic desc'
+        'pic desc'
         'pic type'
         'pic ccolor'
         'pic height'

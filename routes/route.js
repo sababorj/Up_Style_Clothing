@@ -24,7 +24,9 @@ router.get('/', function (req, res) {
             results: data
         });
     })
-
+});
+router.get('/login', function (req, res) {
+    res.render('login');
 
 });
 
