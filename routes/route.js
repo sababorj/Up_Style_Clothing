@@ -1,3 +1,6 @@
+var authenticated = require('../config/middleware/authenticated');
+var passport = require('../config/passport');
+
 var express = require("express");
 var router = express.Router();
 var db = require('../models');
