@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-  mx-auto">
+            {{#each results}}
+            <div class="box">
+                <div class="box_pic">
+                    <img src="{{imgUrl}}" alt="">
+                </div>
+                <div class="box_description">
+                    <p>{{description}}</p>
+                </div>
+                <div class="box_color">
+                    <p>{{color}}</p>
+                </div>
+                <div class="box_height">
+                    <p>{{height}}</p>
+                </div>
+                <div class="box_price">
+                    <p>${{price}}</p>
+                </div>
+                <div class="box_occasion">
+                    <p>{{occasion}}</p>
+                </div>
+                <div class="box_brand">
+                    <p>{{results.brand}}</p>
+                </div>
+                <div class="box_link">
+                    <a href="{{results.productUrl}}">View on Amazon</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+
+
+    </div>

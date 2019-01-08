@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 150px 700px;
+    grid-template-rows: 30px;
+    grid-template-areas:
+        'pic desc'
+        'pic desc'
+        'pic type'
+        'pic ccolor'
+        'pic height'
+        'pic price'
+        'pic occasion'
+        'pic brand'
+        'link link';
+    border: 1px solid black;
+
+
+}
+
+.box img {
+    height: 100%;
+    width: 100%;
+}
+
+.box_pic {
+    grid-area: pic;
+}
+
+.box_description {
+    grid-area: desc;
+}
+
+.box_color {
+    grid-area: ccolor;
+}
+
+.box_height {
+    grid-area: height;
+}
+
+.box_price {
+    grid-area: price;
+}
+
+.box_occasion {
+    grid-area: occasion;
+}
+
+.box_brand {
+    grid-area: brand;
+}
+
+.box_link {
+    width: 100%;
+    grid-area: link;
+    text-align: center;
+}

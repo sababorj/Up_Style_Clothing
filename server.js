@@ -7,7 +7,9 @@ var app = express();
 // set local library and variables
 var db = require('./models');
 var port = process.env.port || 8080;
-var syncOptions = { force: false };
+var syncOptions = { 
+    force: false
+ };
 
 // set up the middleware
 app.use(express.urlencoded({ extended : true }));
