@@ -45,16 +45,32 @@ router.get('/preferences', function (req, res) {
 router.post('/register', function (req, res) {
     var user = req.body.email;
     var password = req.body.password;
-    db.User.create({
-        email: user,
-        password: password
-    }).then(response => {
-        if (response) {
-            res.render("preferences", {
-                email: req.body.email
+    var found = 
+    {
+        emailFound :0,
+        error: "email is already in use"
+    }
+    db.User.findAll({}).then((data) => {
+        if (data.length > 0) {
+            found.emailFound = 1;
+            console.log(found)
+            res.render('register', { result : found })
+        } else {
+            db.User.create({
+                email: user,
+                password: password
+            }).then(response => {
+                if (response) {
+                    res.render("preferences", {
+                        email: req.body.email
+                    })
+                }
             })
         }
     })
+    
+
+
 
 
 });
