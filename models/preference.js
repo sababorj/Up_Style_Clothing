@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
     var Preference = sequelize.define("Preference", {
-        useEmail: DataTypes.STRING,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
         size: {
@@ -15,7 +14,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        price: {
+        minPrice: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false
+        },
+        maxPrice: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false
         },
