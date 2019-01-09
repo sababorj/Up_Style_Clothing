@@ -25,7 +25,7 @@ nav{
     border-radius: 25px;
     background-color: white;
     padding:32px;
-
+    margin:auto;
 }
 .box{
     margin-bottom:32px;
@@ -93,6 +93,9 @@ nav{
     box-shadow: 0 1px 0 0 #f44336  !important;
    }
 
+   ul.dropdown-content.select-dropdown li span {
+    color: #f44336; 
+}
    .login-help{
        margin-top:16px;
    }

@@ -27,13 +27,21 @@
                 <div class="col s12 m9">
                     <div class="right">
                         <ul>
+                            {{!-- {{#if loggedIn}}
+                            <li><a href="/settings" class="black-text">Preferences</a></li>
+                            <li><a href="/logout" class="black-text">Logout</a></li>
+                            <li><a href="/about" class="black-text">About</a></li>
+                            {{#else}} --}}
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
+                            {{!-- {{/if}} --}}
+                            
                         </ul>
                     </div>
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal black-text signup-form">
+                <h2>Login</h2>
 
                     <div class="input-field col s12">
                         <input placeholder="Username" id="username" type="text" class="validate">
@@ -47,49 +55,19 @@
                         <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
                     </div>
                     <div class="col s12 login-help">
-                        <a href="#modal2" class="red-text modal-trigger">No account? Register here.</a> 
+                        <a href="/register" class="red-text modal-trigger">No account? Register here.</a>
                         {{!-- - <a href="#" class="red-text">Forgot Password</a> --}}
                     </div>
                 </div>
             </div>
 
-            <div id="modal2" class="modal black-text signup-form">
-
-                <form action="/register" method="post">
-                    <h2>Register</h2>
-                    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-                    <div class="form-group">
-                        <div class="row">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Email" required="required">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
-                            required="required">
-                    </div>
-                    <div class="form-group">
-                        <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#"
-                                class="red-text">Terms
-                                of Use</a> &amp; <a href="#" class="red-text">Privacy Policy</a></label>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg btn-block red modal-close">Register Now</button>
-                    </div>
-                </form>
-                <div class="text-center">Already have an account? <a href="#" class="red-text modal-close">Sign in</a></div>
-            </div>
+            
         </div>
         </div>
     </nav>
 
     {{{body}}}
+
     <script> M.AutoInit();</script>
 </body>
 
