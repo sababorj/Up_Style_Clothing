@@ -16,9 +16,8 @@ router.get('/', function (req, res) {
 });
 
 // login 
-router.get('/login', function (req, res) {
-    res.render('login');
-
+router.post('/login', passport.authenticate("local"), function (req, res) {
+    res.redirect('/preferences');
 });
 
 // register 
@@ -29,50 +28,48 @@ router.get('/register', function (req, res) {
 router.post('/register', async function (req, res) {
     var user = req.body.email;
     var password = req.body.password;
-    var found = {
-        emailFound: 0,
-        error: "email is already in use"
-    }
-    // look into db for same email
-    var data = await db.User.findAll({
-        where: {
-            email: user
-        }
-    })
-    // if email is already in the db send error message
-    if (data.length > 0) {
-        found.emailFound = 1;
-        console.log(found)
-        res.render('register', {
-            result: found
-        })
-        data = [];
-    }
-    // if email in new create an account for user
-    else {
-        var response = await db.User.create({
+
+    try {
+        await db.User.create({
             email: user,
             password: password
-        })
+        });
+        res.redirect(307, "/login");
+    } catch (e) {
+        res.status(400).send(e);
     }
-    // send user to preferences page
-    if (response) {
-        res.render("preferences", {
-            email: req.body.email
-        })
-    }
+
 });
 
+// preferences
+router.post('/preferences', authenticated, async function (req, res) {
+    var result = await db.Preference.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        size: req.body.size,
+        height: req.body.height,
+        color: req.body.color,
+        minPrice: req.body.minprice,
+        maxPrice: req.body.maxprice,
+        occasion: req.body.occasion,
+        gender: req.body.gender,
+        UserId: req.user.id
+    })
+    console.log(result);
+    res.json(result)
+});
 
-// router.get('/preferences', function (req, res) {
-//     res.render('preferences');
-// });
+router.get('/preferences', authenticated, function (req, res) {
+    console.log(req.user);
+    res.render('preferences');
+});
 
 
 var
 
 
 
+    // profile 
 
 
     module.exports = router;

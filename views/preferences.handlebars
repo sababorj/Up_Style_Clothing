@@ -1,5 +1,5 @@
 <div class="signup-form">
-    <form action="" method="post">
+    <form action="/preference" method="post">
         <h2>Preferences</h2>
 
         <div class="form-group">
@@ -9,76 +9,65 @@
         </div>
 
         <div class="form-group">
+            <label for="sel1">First Name:</label>
             <input type="text" class="form-control" name="firstName" placeholder="Name" required="required">
 
         </div>
         <div class="form-group">
-
+            <label for="sel1">Last Name:</label>
             <input type="text" class="form-control" name="lastName" placeholder="Last Name" required="required">
         </div>
         <div class="form-group">
-
-            <input type="email" class="form-control" name="useEmail" placeholder="email" required="required">
-
-        </div>
-        <div class="form-group">
-            <label for="sel1">Type:</label>
-            <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label for="sel1">Size:</label>
-            <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <select class="form-control" id="sel1" name="size">
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
             </select>
         </div>
         <div class="form-group">
             <label for="sel1">Height:</label>
-            <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <select class="form-control" id="sel1" name="height">
+                <option>short</option>
+                <option>normal</option>
+                <option>tall</option>
+                <option>very tall</option>
             </select>
         </div>
         <div class="form-group">
             <label for="sel1">Color:</label>
-            <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <input class="form-control" required="required" name="color">
+        </div>
+        <div class="form-group">
+            <label for="sel1">Occasion:</label>
+            <select class="form-control" id="sel1" name="occasion">
+                <option>casual</option>
+                <option>formal</option>
+                <option>outdoor</option>
+                <option>work out</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel1">gender:</label>
+            <select class="form-control" id="sel1" name="gender">
+                <option>male</option>
+                <option>female</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <div class="row">
-
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="minprice" placeholder="min Price" required="required">
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="maxprice" placeholder="max Price" required="required">
-                </div>
-            </div>
-
-
+        <div class="col-md-6">
+            <label for="sel1">Min Price</label>
+            <input type="text" class="form-control" name="minprice" placeholder="min Price" required="required">
         </div>
-        <div class="form-group">
-
+        <div class="col-md-6">
+            <label for="sel1">Max Price</label>
+            <input type="text" class="form-control" name="maxprice" placeholder="max Price" required="required">
         </div>
-        <div class="form-group">
 
-        </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Search</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
         </div>
     </form>
 
