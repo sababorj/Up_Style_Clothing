@@ -15,11 +15,11 @@ passport.use(
             }).then(function (dbUser) {
                 if (!dbUser) {
                     return done(null, false, {
-                        message: "This Email is not registered with us!"
+                        message: "Invalid Email!"
                     });
                 } else if (!dbUser.validPassword(password)) {
                     return done(null, false, {
-                        message: "Worng Password! try again."
+                        message: "Invalid Password!"
                     });
                 }
                 return done(null, dbUser)
