@@ -28,6 +28,7 @@ router.get('/register', function (req, res) {
 router.post('/register', async function (req, res) {
     var user = req.body.email;
     var password = req.body.password;
+
     try {
         await db.User.create({
             email: user,
@@ -37,6 +38,7 @@ router.post('/register', async function (req, res) {
     } catch (e) {
         res.status(400).send(e);
     }
+   
 });
 
 // preferences
@@ -61,6 +63,7 @@ router.get('/preferences', authenticated, function (req, res) {
     console.log(req.user);
     res.render('preferences');
 });
+
 
 
 // profile 
