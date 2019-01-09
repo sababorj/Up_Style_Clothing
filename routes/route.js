@@ -15,6 +15,11 @@ router.get('/', function (req, res) {
     })
 });
 
+// about
+router.get('/about', function (req, res) {
+    res.render('about');
+});
+
 // login 
 router.post('/login', passport.authenticate("local"), function(req, res) {
     res.redirect('/preferences');
