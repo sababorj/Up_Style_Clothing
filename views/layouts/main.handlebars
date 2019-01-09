@@ -27,15 +27,27 @@
                 <div class="col s12 m9">
                     <div class="right">
                         <ul>
-                            <li><a href="#" class="black-text">Login</a></li>
-                            <li><a href="#" class="black-text">About</a></li>
-\                        </ul>
+                            <li><a href="#modal1" class="black-text modal-trigger">Login</a></li>
+                            <li><a href="/about" class="black-text">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>A bunch of text</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
     {{{body}}}
+    <script> M.AutoInit();</script>
 </body>
 
 </html>
