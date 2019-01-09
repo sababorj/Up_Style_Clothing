@@ -20,6 +20,11 @@ router.get('/about', function (req, res) {
     res.render('about');
 });
 
+// admin
+router.get('/admin', function (req, res) {
+    res.render('admin');
+});
+
 // login 
 router.post('/login', passport.authenticate("local"), function(req, res) {
     res.redirect('/preferences');
