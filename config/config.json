@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
     "username": "root",
     "password": "root",
-=======
-    "username": "debian-sys-maint",
-    "password": "BPaPNseseiRdcfs6",
->>>>>>> eb2415d50340a4828e90347440e15568c7ab3fe9
     "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "mysql"

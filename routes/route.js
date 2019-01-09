@@ -75,32 +75,32 @@ router.post('/register', async function (req, res) {
 
 // preferences
 router.post('/preferences', authenticated, async function (req, res) {
-                var result = await db.Preference.create({
-                    var pref = await db.Preference.create({
-                        firstName: req.body.firstName,
-                        lastName: req.body.lastName,
-                        size: req.body.size,
-                        height: req.body.height,
-                        color: req.body.color,
-                        minPrice: req.body.minprice,
-                        maxPrice: req.body.maxprice,
-                        occasion: req.body.occasion,
-                        gender: req.body.gender,
-                        UserId: req.user.id
-                    }).then((respo) => {
-                        res.redirect('/profile')
-                    })
-                });
 
-                router.get('/preferences', authenticated, function (req, res) {
-                    console.log(req.user);
-                    res.render('preferences');
-                });
+    db.Preference.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        size: req.body.size,
+        height: req.body.height,
+        color: req.body.color,
+        minPrice: req.body.minprice,
+        maxPrice: req.body.maxprice,
+        occasion: req.body.occasion,
+        gender: req.body.gender,
+        UserId: req.user.id
+    }).then((respo) => {
+        res.redirect('/profile')
+    })
+});
 
-
-                var
+router.get('/preferences', authenticated, function (req, res) {
+    console.log(req.user);
+    res.render('preferences');
+});
 
 
 
 
-                    module.exports = router;
+
+
+
+module.exports = router;
