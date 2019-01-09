@@ -3,10 +3,6 @@ module.exports = function (sequelize, DataTypes) {
         useEmail: DataTypes.STRING,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
-        Ptype: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         size: {
             type: DataTypes.STRING,
             allowNull: false
@@ -16,14 +12,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         color: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        imgUrl: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        productUrl: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -38,12 +26,7 @@ module.exports = function (sequelize, DataTypes) {
         gender: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        brand: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        description: DataTypes.STRING
+        }
     });
     Preference.associate = function (models) {
         models.Preference.belongsTo(models.User, {
