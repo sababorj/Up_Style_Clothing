@@ -47,7 +47,8 @@ router.post('/register', function (req, res) {
     var password = req.body.password;
     db.User.create({
         email: user,
-        password: password
+        password: password,
+
     }).then(response => {
         if (response) {
             res.render("preferences", {
@@ -59,7 +60,10 @@ router.post('/register', function (req, res) {
 
 });
 
+var
 
 
 
-module.exports = router;
+
+
+    module.exports = router;
