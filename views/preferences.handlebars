@@ -1,73 +1,74 @@
 <div class="signup-form">
-    <form action="/preference" method="post">
+    <form action="/preferences" method="post">
         <h2>Preferences</h2>
 
-        <div class="form-group">
-            <div class="row">
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="sel1">First Name:</label>
+        <div class="form-group input-field">
+            <label for="firstName">First Name:</label>
             <input type="text" class="form-control" name="firstName" placeholder="Name" required="required">
 
         </div>
-        <div class="form-group">
-            <label for="sel1">Last Name:</label>
+        <div class="form-group input-field">
+            <label for="lastName">Last Name:</label>
             <input type="text" class="form-control" name="lastName" placeholder="Last Name" required="required">
         </div>
-        <div class="form-group">
-            <label for="sel1">Size:</label>
-            <select class="form-control" id="sel1" name="size">
+        <div class="form-group input-field">
+            <select class="form-control" id="size" name="size">
+                <option value="" disabled selected>Choose your option</option>
                 <option>XS</option>
                 <option>S</option>
                 <option>M</option>
                 <option>L</option>
                 <option>XL</option>
             </select>
+            <label for="size">Size:</label>
         </div>
-        <div class="form-group">
-            <label for="sel1">Height:</label>
-            <select class="form-control" id="sel1" name="height">
+
+        <div class="form-group input-field">
+            <select class="form-control" id="height" name="height">
+                <option value="" disabled selected>Choose your option</option>
                 <option>short</option>
                 <option>normal</option>
                 <option>tall</option>
                 <option>very tall</option>
             </select>
+            <label for="height">Height:</label>
         </div>
-        <div class="form-group">
-            <label for="sel1">Color:</label>
-            <input class="form-control" required="required" name="color">
+
+        <div class="form-group input-field">
+            <label for="color">Color:</label>
+            <input type="text" class="form-control" name="color" placeholder="Color" required="required">
         </div>
-        <div class="form-group">
-            <label for="sel1">Occasion:</label>
-            <select class="form-control" id="sel1" name="occasion">
+
+        <div class="form-group input-field">
+            <select class="form-control" id="occasion" name="occasion">
                 <option>casual</option>
                 <option>formal</option>
                 <option>outdoor</option>
                 <option>work out</option>
             </select>
+            <label for="occasion">Occasion:</label>
+
         </div>
-        <div class="form-group">
-            <label for="sel1">gender:</label>
-            <select class="form-control" id="sel1" name="gender">
+
+        <div class="form-group input-field">
+            <select class="form-control" id="hender" name="gender">
                 <option>male</option>
                 <option>female</option>
             </select>
+            <label for="hender">gender:</label>
         </div>
 
         <div class="col-md-6">
-            <label for="sel1">Min Price</label>
+            <label for="minprice">Min Price</label>
             <input type="text" class="form-control" name="minprice" placeholder="min Price" required="required">
         </div>
         <div class="col-md-6">
-            <label for="sel1">Max Price</label>
+            <label for="maxprice">Max Price</label>
             <input type="text" class="form-control" name="maxprice" placeholder="max Price" required="required">
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block red">Submit</button>
         </div>
     </form>
 
