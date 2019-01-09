@@ -39,6 +39,10 @@ router.get('/profile', authenticated, async function(req,res){
     })
     console.log(result)
 })
+// about
+router.get('/about', function (req, res) {
+    res.render('about');
+});
 
 // login 
 router.post('/login', passport.authenticate("local"), function(req, res) {
