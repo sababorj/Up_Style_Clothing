@@ -18,26 +18,56 @@ router.get('/', function (req, res) {
 });
 
 // profile
-router.get('/profile', authenticated, async function(req,res){
+router.get('/profile', authenticated, async function (req, res) {
     var Pref = await db.Preference.findAll({
         where: {
-            UserId : req.user.id
+            UserId: req.user.id
         }
     });
 
+    Pref[0].gender === 'male' ? Pref[0].gender = 'm' : Pref[0].gender = 'f';
+    // this logic will query the product table looking for items with same gender , within price range, and have one of the preferences
     var result = await db.Product.findAll({
-        where: { 
-            [Op.or]: [{size: { 
-                [Op.like] : `%${Pref[0].size}%`
+        where: {
+            [Op.and]: [
+                {
+                    price: {
+                        [Op.gt]: Pref[0].minPrice,
+                        [Op.lt]: Pref[0].maxPrice
+                    }
+                },
+                {
+                    gender: {
+                        [Op.like]: `%${Pref[0].gender}%`
+                    }
+                },
+                {
+                    [Op.or]: [{
+                        size: {
+                            [Op.like]: `%${Pref[0].size}%`
 
-            }},
-            {color : Pref[0].color
-            }
-        ]
-
+                        }
+                    },
+                    {
+                        color: Pref[0].color
+                    },
+                    {
+                        height: {
+                            [Op.like]: `%${Pref[0].height}%`
+                        }
+                    },
+                    {
+                        occasion: {
+                            [Op.like]: `%${Pref[0].occasion}%`
+                        }
+                    }
+                    ]
+                }]
         }
     })
-    console.log(result)
+    if(result.length > 0){
+        res.render('index', { results: result })
+    }
 })
 // about
 router.get('/about', function (req, res) {
@@ -45,8 +75,8 @@ router.get('/about', function (req, res) {
 });
 
 // login 
-router.post('/login', passport.authenticate("local"), function(req, res) {
-        res.redirect('/preferences');
+router.post('/login', passport.authenticate("local"), function (req, res) {
+    res.redirect('/preferences');
 });
 
 // register 
@@ -67,12 +97,12 @@ router.post('/register', async function (req, res) {
     } catch (e) {
         res.status(400).send(e);
     }
-   
+
 });
 
 // preferences
 router.post('/preferences', authenticated, async function (req, res) {
-   var pref = await db.Preference.create({
+    db.Preference.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         size: req.body.size,
@@ -83,7 +113,7 @@ router.post('/preferences', authenticated, async function (req, res) {
         occasion: req.body.occasion,
         gender: req.body.gender,
         UserId: req.user.id
-    }).then( (respo) => {
+    }).then((respo) => {
         res.redirect('/profile')
     })
 });
