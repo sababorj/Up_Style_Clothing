@@ -9,13 +9,23 @@ var db = require('../models');
 
 // home 
 router.get('/', async function (req, res) {
-   var data = await db.Product.findAll({})
-        console.log(data[0]);
-        res.render('index', {
-            results: data
+    var data = await db.Product.findAll({})
+    console.log(data[0]);
+    res.render('index', {
+        results: data
     })
 });
 
+//login 
+router.post("/login",  passport.authenticate("local"), function (req, res){
+      if (req.body.type === 'client'){
+        console.log(req.user.id)
+        res.redirect("/profile");
+    } else {
+        res.redirect('/product')
+    }
+
+})
 
 // profile
 router.get('/profile', authenticated, async function (req, res) {
@@ -31,38 +41,38 @@ router.get('/profile', authenticated, async function (req, res) {
     var result = await db.Product.findAll({
         where: {
             [Op.and]: [{
-                    price: {
-                        [Op.gt]: Pref[0].minPrice,
-                        [Op.lt]: Pref[0].maxPrice
-                    }
-                },
-                {
-                    gender: {
-                        [Op.like]: `%${Pref[0].gender}%`
-                    }
-                },
-                {
-                    [Op.or]: [{
-                            size: {
-                                [Op.like]: `%${Pref[0].size}%`
-
-                            }
-                        },
-                        {
-                            color: Pref[0].color
-                        },
-                        {
-                            height: {
-                                [Op.like]: `%${Pref[0].height}%`
-                            }
-                        },
-                        {
-                            occasion: {
-                                [Op.like]: `%${Pref[0].occasion}%`
-                            }
-                        }
-                    ]
+                price: {
+                    [Op.gt]: Pref[0].minPrice,
+                    [Op.lt]: Pref[0].maxPrice
                 }
+            },
+            {
+                gender: {
+                    [Op.like]: `%${Pref[0].gender}%`
+                }
+            },
+            {
+                [Op.or]: [{
+                    size: {
+                        [Op.like]: `%${Pref[0].size}%`
+
+                    }
+                },
+                {
+                    color: Pref[0].color
+                },
+                {
+                    height: {
+                        [Op.like]: `%${Pref[0].height}%`
+                    }
+                },
+                {
+                    occasion: {
+                        [Op.like]: `%${Pref[0].occasion}%`
+                    }
+                }
+                ]
+            }
             ]
         }
     })
@@ -75,7 +85,7 @@ router.get('/profile', authenticated, async function (req, res) {
     } else {
         var Not = {
             Found: 1,
-            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"     
+            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
         res.render('index', {
             Not: Not,
@@ -121,8 +131,7 @@ router.post('/register', async function (req, res) {
             password: req.body.password,
             userType: "client"
         });
-
-            res.redirect(307, "/login/newclient");
+        res.redirect(307, "/login/newclient");
     } catch (e) {
         res.status(400).send(e);
     }
