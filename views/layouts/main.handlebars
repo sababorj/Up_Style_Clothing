@@ -58,14 +58,12 @@
                         <input id="password" type="text" class="validate">
                         <label for="password">Password</label>
                     </div>
-                    <div class="input-field col s12">
-                        <div class="form-group input-field">
-                            <select class="form-control" id="occasion" name="type">
-                                <option>client</option>
-                                <option>admin</option>
-                            </select>
-                            <label for="occasion">userType:</label>
-                        </div>
+                    <div class="col s12">
+                        <label for="clientType">userType:</label>
+                        <select class="form-control" id="clientType" name="type">
+                            <option>client</option>
+                            <option>admin</option>
+                        </select>
                     </div>
                     <div class="col s12">
                         <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
@@ -87,13 +85,13 @@
     <script> M.AutoInit();</script>
 </body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
-        $("body").on("click", ".edit",function() {
+        $("body").on("click", ".edit", function () {
             console.log($(this).data("id"));
         })
-        $("body").on("click", ".delete",function() {
+        $("body").on("click", ".delete", function () {
             console.log($(this).data("id"));
 
         })
