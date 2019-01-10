@@ -17,8 +17,10 @@ router.get('/', function (req, res) {
     })
 });
 
+
 // profile
-router.get('/profile', authenticated, async function (req, res) {
+router.get('/user/profile', authenticated, async function (req, res) {
+    // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
             UserId: req.user.id
@@ -65,12 +67,13 @@ router.get('/profile', authenticated, async function (req, res) {
                 }]
         }
     })
+    // show result
     if (result.length > 0) {
         res.render('index', { results: result })
     } else {
         var Not = {
             Found: 1,
-            error: "Unfortunately We have no product that matches you prefereces feel free to change your prefrences"
+            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
         res.render('index', { Not: Not })
     }
@@ -81,8 +84,18 @@ router.get('/about', function (req, res) {
 });
 
 // login 
-router.post('/login', passport.authenticate("local"), function (req, res) {
-    res.redirect('/preferences');
+router.post('/login/:type', passport.authenticate("local"), function (req, res) {
+    switch(req.params.type){
+        case "newclient":
+        res.redirect('/preferences');
+        break;
+        case "client":
+        res.redirect("/user/profile");
+        break;
+        case "admin":
+        res.redirect("/admin/profile")
+    }
+    
 });
 
 // register 
@@ -91,19 +104,23 @@ router.get('/register', function (req, res) {
 });
 
 router.post('/register', async function (req, res) {
-    var user = req.body.email;
-    var password = req.body.password;
-
     try {
+        // create the user in user table
         await db.User.create({
-            email: user,
-            password: password
+            email: req.body.email,
+            password: req.body.password,
+            userType: req.body.type
         });
-        res.redirect(307, "/login");
+
+        if (req.body.type === 'client') {
+            // redirect to login wout for authentication and starting session 
+            res.redirect(307, "/login/newclient");
+        } else {
+            res.redirect(307, "/login/admin");
+        }
     } catch (e) {
         res.status(400).send(e);
     }
-
 });
 
 // preferences
@@ -120,7 +137,7 @@ router.post('/preferences', authenticated, async function (req, res) {
         gender: req.body.gender,
         UserId: req.user.id
     }).then((respo) => {
-        res.redirect('/profile')
+        res.redirect('/user/profile')
     })
 });
 
@@ -130,9 +147,11 @@ router.get('/preferences', authenticated, function (req, res) {
 });
 
 
-
-
-// profile 
+// logout
+router.get('/user/logout', (req, res)=>{
+    req.logOut();
+    res.redirect("/")
+});
 
 
 module.exports = router;
