@@ -19,7 +19,6 @@ router.get('/', async function (req, res) {
 
 // profile
 router.get('/profile', authenticated, async function (req, res) {
-    var loggedIn = true;
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
