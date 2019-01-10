@@ -2,7 +2,7 @@ var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    // The email cannot be null, and must be a proper email before creation
+    // The email as username
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,6 +14,11 @@ module.exports = function (sequelize, DataTypes) {
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    // userType diffrenciate client from admin
+    userType: {
+      type : DataTypes.STRING,
       allowNull: false
     }
   });
