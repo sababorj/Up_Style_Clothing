@@ -4,6 +4,9 @@
 
 <div class="container">
     {{!-- <div class="row"> --}}
+        {{#if Not.Found}}
+        <h5> {{Not.error}} </h5>
+        {{/if}}
         <div class="row">
             {{#each results}}
             <a href="{{results.productUrl}}" class="itemlink">

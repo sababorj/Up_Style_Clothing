@@ -11,10 +11,26 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    {{!-- added the link below to use the icons for materialize if not needed later this reference cane be removed --}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {{!-- jquery cdn --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Upstyle</title>
 </head>
+<style>
+    {{!-- temp  style added for the table can be removed later when real style is implemented --}}
+    .striped td {
+    font-size: 10px;
+    margin: 0px;
+    padding:5px;
+}
+
+
+</style>
 
 <body>
     <nav class="white">
@@ -35,13 +51,13 @@
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{!-- {{/if}} --}}
-                            
+
                         </ul>
                     </div>
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal black-text signup-form">
-                <h2>Login</h2>
+                    <h2>Login</h2>
 
                     <div class="input-field col s12">
                         <input placeholder="Username" id="username" type="text" class="validate">
@@ -50,6 +66,15 @@
                     <div class="input-field col s12">
                         <input id="password" type="text" class="validate">
                         <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <div class="form-group input-field">
+                            <select class="form-control" id="occasion" name="type">
+                                <option>client</option>
+                                <option>admin</option>
+                            </select>
+                            <label for="occasion">userType:</label>
+                        </div>
                     </div>
                     <div class="col s12">
                         <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
@@ -61,7 +86,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         </div>
     </nav>
@@ -70,5 +95,20 @@
 
     <script> M.AutoInit();</script>
 </body>
+<script>
+    $(document).ready(function() {
+
+
+        $("body").on("click", ".edit",function() {
+            console.log($(this).data("id"));
+        })
+        $("body").on("click", ".delete",function() {
+            console.log($(this).data("id"));
+
+        })
+
+
+    })
+</script>
 
 </html>
