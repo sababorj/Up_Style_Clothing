@@ -122,12 +122,7 @@ router.post('/register', async function (req, res) {
             userType: "client"
         });
 
-        if (req.body.type === 'client') {
-            // redirect to login wout for authentication and starting session 
             res.redirect(307, "/login/newclient");
-        } else {
-            res.redirect(307, "/login/admin");
-        }
     } catch (e) {
         res.status(400).send(e);
     }
