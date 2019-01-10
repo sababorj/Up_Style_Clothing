@@ -1,54 +1,185 @@
-<h1>Items Management</h1>
+<!-- Page Layout here -->
+<div class="container">
+    <div class="row">
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="{{userImage}}">
+                    </div>
+                    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+                    <a href="#name"><span class="white-text name">{{user}}</span></a>
+                </div>
+            </li>
+        </ul>
+        <a href="#" data-target="slide-out" class="btn red sidenav-trigger">Admin</a>
+        
+        <div class="col s12">
 
-<div id="comments">
-    <table class="responsive-table striped">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Size</th>
-                <th>Color</th>
-                <th>image URL</th>
-                <th>Product URL</th>
-                <th>Price</th>
-                <th>Occasion</th>
-                <th>Gender</th>
-                <th>Brand</th>
-                <th>Edit </th>
-                <th>Remove</th>
-            </tr>
+            <h1>Items Management</h1>
+        <a class="btn-floating btn-large waves-effect waves-light right red modal-trigger" href="#modalAdd" style=""><i class="material-icons">add</i></a>
 
-        </thead>
-        <tbody>
-            {{#each results}}
-            <tr>
-                <td>{{Ptype}}</td>
-                <td>{{size}}</td>
-                <td>{{color}}</td>
-                <td>{{imgUrl}}</td>
-                <td>{{productUrl}}</td>
-                <td>{{price}}</td>
-                <td>{{occasion}}</td>
-                <td>{{gender}}</td>
-                <td>{{brand}}</td>
-                <td>
-                    <a class="waves-effect waves-light btn edit" data-id="{{id}}">
-                        <i class="Tiny material-icons">edit</i>
-                    </a>
-                </td>
-                <td>
-                    <a class="waves-effect waves-light btn delete" data-id="{{id}}">
-                        <i class="Tiny material-icons">delete</i>
-                    </a>
+            <div id="comments">
+                <table class="responsive-table striped">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>image URL</th>
+                            <th>Product URL</th>
+                            <th>Price</th>
+                            <th>Occasion</th>
+                            <th>Gender</th>
+                            <th>Brand</th>
+                            <th>Edit </th>
+                            <th>Remove</th>
+                        </tr>
 
-                </td>
+                    </thead>
+                    <tbody>
+                        {{#each results}}
+                        <tr>
+                            <td>{{Ptype}}</td>
+                            <td>{{size}}</td>
+                            <td>{{color}}</td>
+                            <td>{{imgUrl}}</td>
+                            <td>{{productUrl}}</td>
+                            <td>{{price}}</td>
+                            <td>{{occasion}}</td>
+                            <td>{{gender}}</td>
+                            <td>{{brand}}</td>
+                            <td>
+                                <a class="waves-effect waves-light btn edit red modal-trigger" data-id="{{id}}" href="#modalEdit">
+                                    <i class="Tiny material-icons">edit</i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="waves-effect waves-light btn delete red" data-id="{{id}}">
+                                    <i class="Tiny material-icons">delete</i>
+                                </a>
 
-            </tr>
+                            </td>
 
-            {{/each}}
+                        </tr>
 
+                        {{/each}}
 
-        </tbody>
+                    </tbody>
 
-    </table>
+                </table>
+                <!-- Modal Structure -->
+                <div id="modalEdit" class="modal black-text signup-form">
+                    <h2>Edit Item</h2>
 
+                    <div class="input-field col s12">
+                        <input placeholder="item" id="item" type="text" class="validate">
+                        <label for="item"></label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="size" id="size" type="text" class="validate">
+                            <label for="size"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="color" id="color" type="text" class="validate">
+                            <label for="color"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="imgUrl" id="imgUrl" type="text" class="validate">
+                            <label for="imgUrl"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="productUrl" id="productUrl" type="text" class="validate">
+                            <label for="productUrl"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="price" id="price" type="text" class="validate">
+                            <label for="price"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="occasion" id="occasion" type="text" class="validate">
+                            <label for="occasion"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="gender" id="gender" type="text" class="validate">
+                            <label for="gender"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="brand" id="brand" type="text" class="validate">
+                            <label for="brand"></label>
+                        </div>
+                    </div>
+                    <div class="row right">
+                        <button class="btn waves-effect waves-light red modal-close" id="save" type="submit" name="save">Save
+                        </button>
+                        <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
+                        </button>
+                    </div>
+                </div>
+                <div id="modalAdd" class="modal black-text signup-form">
+                    <h2>Edit Item</h2>
+
+                    <div class="input-field col s12">
+                        <input placeholder="item" id="item" type="text" class="validate">
+                        <label for="item"></label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="size" id="size" type="text" class="validate">
+                            <label for="size"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="color" id="color" type="text" class="validate">
+                            <label for="color"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="imgUrl" id="imgUrl" type="text" class="validate">
+                            <label for="imgUrl"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="productUrl" id="productUrl" type="text" class="validate">
+                            <label for="productUrl"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="price" id="price" type="text" class="validate">
+                            <label for="price"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="occasion" id="occasion" type="text" class="validate">
+                            <label for="occasion"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="gender" id="gender" type="text" class="validate">
+                            <label for="gender"></label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="brand" id="brand" type="text" class="validate">
+                            <label for="brand"></label>
+                        </div>
+                    </div>
+                    <div class="row right">
+                        <button class="btn waves-effect waves-light red modal-close" id="save" type="submit" name="save">Save
+                        </button>
+                        <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>

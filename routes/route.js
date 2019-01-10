@@ -87,6 +87,11 @@ router.get('/about', function (req, res) {
     res.render('about');
 });
 
+// admin
+router.get('/admin', function (req, res) {
+    res.render('admin');
+});
+
 // login 
 router.post('/login/:type', passport.authenticate("local"), function (req, res) {
     switch (req.params.type) {
