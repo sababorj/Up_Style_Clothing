@@ -18,7 +18,7 @@ router.get('/', async function (req, res) {
 
 
 // profile
-router.get('/user/profile', authenticated, async function (req, res) {
+router.get('/profile', authenticated, async function (req, res) {
     var loggedIn = true;
     // find user preferences
     var Pref = await db.Preference.findAll({
@@ -101,7 +101,7 @@ router.post('/login/:type', passport.authenticate("local"), function (req, res) 
             res.redirect('/preferences');
             break;
         case "client":
-            res.redirect("/user/profile");
+            res.redirect("/profile");
             break;
         case "admin":
             res.redirect("/products");
@@ -120,7 +120,7 @@ router.post('/register', async function (req, res) {
         await db.User.create({
             email: req.body.email,
             password: req.body.password,
-            userType: req.body.type
+            userType: "client"
         });
 
         if (req.body.type === 'client') {
@@ -148,7 +148,7 @@ router.post('/preferences', authenticated, async function (req, res) {
         gender: req.body.gender,
         UserId: req.user.id
     }).then((respo) => {
-        res.redirect('/user/profile');
+        res.redirect('/profile');
     })
 });
 
@@ -161,7 +161,7 @@ router.get('/preferences', authenticated, function (req, res) {
 
 
 // logout
-router.get('/user/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.logOut();
     res.redirect("/")
 });
