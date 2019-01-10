@@ -1,0 +1,54 @@
+<h1>Items Management</h1>
+
+<div id="comments">
+    <table class="responsive-table striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>image URL</th>
+                <th>Product URL</th>
+                <th>Price</th>
+                <th>Occasion</th>
+                <th>Gender</th>
+                <th>Brand</th>
+                <th>Edit </th>
+                <th>Remove</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td>{{Ptype}}</td>
+                <td>{{size}}</td>
+                <td>{{color}}</td>
+                <td>{{imgUrl}}</td>
+                <td>{{productUrl}}</td>
+                <td>{{price}}</td>
+                <td>{{occasion}}</td>
+                <td>{{gender}}</td>
+                <td>{{brand}}</td>
+                <td>
+                    <a class="waves-effect waves-light btn edit" data-id="{{id}}">
+                        <i class="Tiny material-icons">edit</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="waves-effect waves-light btn delete" data-id="{{id}}">
+                        <i class="Tiny material-icons">delete</i>
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {{/each}}
+
+
+        </tbody>
+
+    </table>
+
+</div>
