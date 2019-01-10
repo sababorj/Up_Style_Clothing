@@ -11,7 +11,7 @@ var productRoutes = require("./routes/products");
 var app = express();
 var port = process.env.port || 8080;
 var syncOptions = {
-    force: false
+    force: true
 };
 
 // set up the middleware
