@@ -17,6 +17,7 @@ router.get('/', function (req, res) {
     })
 });
 
+
 // profile
 router.get('/user/profile', authenticated, async function (req, res) {
     // find user preferences

@@ -35,13 +35,13 @@
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{!-- {{/if}} --}}
-                            
+
                         </ul>
                     </div>
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal black-text signup-form">
-                <h2>Login</h2>
+                    <h2>Login</h2>
 
                     <div class="input-field col s12">
                         <input placeholder="Username" id="username" type="text" class="validate">
@@ -50,6 +50,16 @@
                     <div class="input-field col s12">
                         <input id="password" type="text" class="validate">
                         <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                        <div class="form-group input-field">
+                            <select class="form-control" id="occasion" name="type">
+                                <option>client</option>
+                                <option>admin</option>
+                            </select>
+                            <label for="occasion">userType:</label>
+                        </div>
                     </div>
                     <div class="col s12">
                         <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
@@ -61,7 +71,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         </div>
     </nav>
