@@ -1,22 +1,19 @@
 <div class="container">
     <div class="col s12">
         <div class="signup-form">
-            <form action="/register" method="post">
+            <form id="registration-form" action="/register" method="post">
                 <h2>Register</h2>
                 <p class="hint-text">Create your account. It's free and only takes a minute.</p>
             
 
                 <div class="input-field col s12">
                     <input type="text" class="form-control" name="email" placeholder="Email" required="required">
-                    {{#if result.emailFound}}
-                    <small> {{result.error}} </small>
-                    {{/if}}
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password"
+                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
                         required="required">
                 </div>
                 {{!-- <div class="form-group">

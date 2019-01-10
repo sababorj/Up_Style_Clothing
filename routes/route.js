@@ -65,8 +65,14 @@ router.get('/profile', authenticated, async function (req, res) {
                 }]
         }
     })
-    if(result.length > 0){
+    if (result.length > 0) {
         res.render('index', { results: result })
+    } else {
+        var Not = {
+            Found: 1,
+            error: "Unfortunately We have no product that matches you prefereces feel free to change your prefrences"
+        }
+        res.render('index', { Not: Not })
     }
 })
 // about
