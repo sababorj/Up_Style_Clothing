@@ -43,14 +43,15 @@
                 <div class="col s12 m9">
                     <div class="right">
                         <ul>
-                            {{!-- {{#if loggedIn}}
+                            {{#if user}}
                             <li><a href="/settings" class="black-text">Preferences</a></li>
                             <li><a href="/logout" class="black-text">Logout</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
-                            {{#else}} --}}
+                            {{/if}}
+                            {{#unless user}}
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
-                            {{!-- {{/if}} --}}
+                           {{/unless}}
 
                         </ul>
                     </div>
@@ -96,17 +97,17 @@
     <script> M.AutoInit();</script>
 </body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
-        $("body").on("click", ".edit",function() {
-            console.log($(this).data("id"));
-        })
-        $("body").on("click", ".delete",function() {
-            console.log($(this).data("id"));
 
-        })
+    $("body").on("click", ".edit", function () {
+        console.log($(this).data("id"));
+    })
+    $("body").on("click", ".delete", function () {
+        console.log($(this).data("id"));
 
+    })
 
     })
 </script>
