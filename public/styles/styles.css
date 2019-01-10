@@ -16,6 +16,11 @@ nav{
     padding: 8px 0!important;
 }
 
+.logo-img2 {
+    max-width: 180px!important;
+    padding: 8px 0!important;
+}
+
 .itemlink{
     color:black;
 }
@@ -99,3 +104,10 @@ nav{
    .login-help{
        margin-top:16px;
    }
+
+   #modalEdit{
+       max-height:100%;
+   }
+   #modalAdd{
+    max-height:100%;
+}
