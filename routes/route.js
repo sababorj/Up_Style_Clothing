@@ -119,15 +119,10 @@ router.post('/register', async function (req, res) {
         await db.User.create({
             email: req.body.email,
             password: req.body.password,
-            userType: req.body.type
+            userType: "client"
         });
 
-        if (req.body.type === 'client') {
-            // redirect to login wout for authentication and starting session 
             res.redirect(307, "/login/newclient");
-        } else {
-            res.redirect(307, "/login/admin");
-        }
     } catch (e) {
         res.status(400).send(e);
     }
