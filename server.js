@@ -6,7 +6,7 @@ var exphbs = require("express-handlebars");
 var db = require('./models');
 var passport = require("./config/passport");
 var routes = require('./routes/route');
-
+var productRoutes = require("./routes/products");
 // set server variables
 var app = express();
 var port = process.env.port || 8080;
@@ -44,6 +44,10 @@ app.set("view engine", "handlebars");
 
 // routes
 app.use('/', routes);
+
+//route for the the management page 
+app.use('/products', productRoutes);
+
 
 
 db.sequelize.sync(syncOptions).then(() => {

@@ -11,10 +11,26 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    {{!-- added the link below to use the icons for materialize if not needed later this reference cane be removed --}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {{!-- jquery cdn --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Upstyle</title>
 </head>
+<style>
+    {{!-- temp  style added for the table can be removed later when real style is implemented --}}
+    .striped td {
+    font-size: 10px;
+    margin: 0px;
+    padding:5px;
+}
+
+
+</style>
 
 <body>
     <nav class="white">
@@ -52,7 +68,6 @@
                         <label for="password">Password</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                         <div class="form-group input-field">
                             <select class="form-control" id="occasion" name="type">
                                 <option>client</option>
@@ -80,5 +95,20 @@
 
     <script> M.AutoInit();</script>
 </body>
+<script>
+    $(document).ready(function() {
+
+
+        $("body").on("click", ".edit",function() {
+            console.log($(this).data("id"));
+        })
+        $("body").on("click", ".delete",function() {
+            console.log($(this).data("id"));
+
+        })
+
+
+    })
+</script>
 
 </html>

@@ -31,8 +31,7 @@ router.get('/user/profile', authenticated, async function (req, res) {
     // this logic will query the product table looking for items with same gender , within price range, and have one of the preferences
     var result = await db.Product.findAll({
         where: {
-            [Op.and]: [
-                {
+            [Op.and]: [{
                     price: {
                         [Op.gt]: Pref[0].minPrice,
                         [Op.lt]: Pref[0].maxPrice
@@ -45,37 +44,42 @@ router.get('/user/profile', authenticated, async function (req, res) {
                 },
                 {
                     [Op.or]: [{
-                        size: {
-                            [Op.like]: `%${Pref[0].size}%`
+                            size: {
+                                [Op.like]: `%${Pref[0].size}%`
 
+                            }
+                        },
+                        {
+                            color: Pref[0].color
+                        },
+                        {
+                            height: {
+                                [Op.like]: `%${Pref[0].height}%`
+                            }
+                        },
+                        {
+                            occasion: {
+                                [Op.like]: `%${Pref[0].occasion}%`
+                            }
                         }
-                    },
-                    {
-                        color: Pref[0].color
-                    },
-                    {
-                        height: {
-                            [Op.like]: `%${Pref[0].height}%`
-                        }
-                    },
-                    {
-                        occasion: {
-                            [Op.like]: `%${Pref[0].occasion}%`
-                        }
-                    }
                     ]
-                }]
+                }
+            ]
         }
     })
     // show result
     if (result.length > 0) {
-        res.render('index', { results: result })
+        res.render('index', {
+            results: result
+        })
     } else {
         var Not = {
             Found: 1,
             error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
-        res.render('index', { Not: Not })
+        res.render('index', {
+            Not: Not
+        })
     }
 })
 // about
@@ -85,17 +89,17 @@ router.get('/about', function (req, res) {
 
 // login 
 router.post('/login/:type', passport.authenticate("local"), function (req, res) {
-    switch(req.params.type){
+    switch (req.params.type) {
         case "newclient":
-        res.redirect('/preferences');
-        break;
+            res.redirect('/preferences');
+            break;
         case "client":
-        res.redirect("/user/profile");
-        break;
+            res.redirect("/user/profile");
+            break;
         case "admin":
-        res.redirect("/products")
+            res.redirect("/products")
     }
-    
+
 });
 
 // register 
@@ -148,7 +152,7 @@ router.get('/preferences', authenticated, function (req, res) {
 
 
 // logout
-router.get('/user/logout', (req, res)=>{
+router.get('/user/logout', (req, res) => {
     req.logOut();
     res.redirect("/")
 });
