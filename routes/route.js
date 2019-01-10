@@ -93,7 +93,7 @@ router.post('/login/:type', passport.authenticate("local"), function (req, res) 
         res.redirect("/user/profile");
         break;
         case "admin":
-        res.redirect("/admin/profile")
+        res.redirect("/products")
     }
     
 });
