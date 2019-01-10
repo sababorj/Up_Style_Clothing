@@ -146,7 +146,11 @@ router.get('/preferences', authenticated, function (req, res) {
 });
 
 
-// profile 
+// logout
+router.get('/user/logout', (req, res)=>{
+    req.logOut();
+    res.redirect("/")
+});
 
 
 module.exports = router;
