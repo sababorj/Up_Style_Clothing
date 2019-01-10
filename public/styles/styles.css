@@ -99,3 +99,10 @@ nav{
    .login-help{
        margin-top:16px;
    }
+
+   #modalEdit{
+       max-height:100%;
+   }
+   #modalAdd{
+    max-height:100%;
+}
