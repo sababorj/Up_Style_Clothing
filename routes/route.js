@@ -8,18 +8,18 @@ var router = express.Router();
 var db = require('../models');
 
 // home 
-router.get('/', function (req, res) {
-    db.Product.findAll({}).then((data) => {
+router.get('/', async function (req, res) {
+   var data = await db.Product.findAll({})
         console.log(data[0]);
         res.render('index', {
             results: data
-        });
     })
 });
 
 
 // profile
 router.get('/user/profile', authenticated, async function (req, res) {
+    var loggedIn = true;
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
@@ -70,15 +70,17 @@ router.get('/user/profile', authenticated, async function (req, res) {
     // show result
     if (result.length > 0) {
         res.render('index', {
-            results: result
+            results: result,
+            user: req.user
         })
     } else {
         var Not = {
             Found: 1,
-            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
+            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"     
         }
         res.render('index', {
-            Not: Not
+            Not: Not,
+            user: req.user
         })
     }
 })
@@ -102,7 +104,7 @@ router.post('/login/:type', passport.authenticate("local"), function (req, res) 
             res.redirect("/user/profile");
             break;
         case "admin":
-            res.redirect("/products")
+            res.redirect("/products");
     }
 
 });
@@ -146,13 +148,15 @@ router.post('/preferences', authenticated, async function (req, res) {
         gender: req.body.gender,
         UserId: req.user.id
     }).then((respo) => {
-        res.redirect('/user/profile')
+        res.redirect('/user/profile');
     })
 });
 
 router.get('/preferences', authenticated, function (req, res) {
-    console.log(req.user);
-    res.render('preferences');
+
+    res.render('preferences', {
+        user: req.user
+    });
 });
 
 
