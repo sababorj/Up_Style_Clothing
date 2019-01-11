@@ -36,7 +36,7 @@
                     <div class="right">
                         <ul>
                             {{#if user}}
-                            <li><a href="/settings" class="black-text">Setting</a></li>
+                            <li><a href="/setting" class="black-text">Setting</a></li>
                             <li><a href="/logout" class="black-text">Logout</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{/if}}
@@ -57,7 +57,7 @@
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="text" class="validate">
+                        <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                     <div class="form-group input-field">
@@ -89,7 +89,33 @@
 </body>
 <script src="./js/management.js"></script>
 <script>
-    
+
+    $(document).ready(function () {
+
+
+
+
+        $("body").on("click", ".edit", function () {
+            console.log($(this).data("id"));
+        })
+        $("body").on("click", ".delete", function () {
+            console.log($(this).data("id"));
+        })
+
+        $("#login").on("click", (e) => {
+            e.preventDefault();
+            $.ajax({
+                method: "POST",
+                url: "/login",
+                data: {
+                    email: $("#username").val().trim(),
+                    password: $("#password").val().trim(),
+                    type: $("#type").val().trim()
+                }
+            })
+        })
+    })
+
 </script>
 
 </html>
