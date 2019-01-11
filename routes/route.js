@@ -31,7 +31,7 @@ router.get('/profile', authenticated, async function (req, res) {
         }
     });
 
-    Pref[0].gender === 'male' ? Pref[0].gender = 'm' : Pref[0].gender = 'f';
+    var Pcolor = Pref[0].color.toUperCase()
     // this logic will query the product table looking for items with same gender , within price range, and have one of the preferences
     var result = await db.Product.findAll({
         where: {
@@ -47,19 +47,22 @@ router.get('/profile', authenticated, async function (req, res) {
                 }
             },
             {
-                [Op.or]: [{
-                    size: {
-                        [Op.like]: `%${Pref[0].size}%`
+                size: {
+                    [Op.like]: `%${Pref[0].size}%`
 
-                    }
-                },
+                }
+            },
+            {
+                height: {
+                    [Op.like]: `%${Pref[0].height}%`
+                }
+            }
+            {
+                [Op.or]: [
                 {
-                    color: Pref[0].color
-                },
-                {
-                    height: {
-                        [Op.like]: `%${Pref[0].height}%`
-                    }
+                    color:{
+                        [Op.like]: `%${Pcolor}%`
+                    } 
                 },
                 {
                     occasion: {
