@@ -7,10 +7,12 @@
     letter-spacing:.089px;
     line-height:1.678rem;
 }
+
 nav{
     box-shadow: none;
     margin-top:8px;
 }
+
 .logo-img {
     max-width: 80px!important;
     padding: 8px 0!important;
@@ -32,6 +34,7 @@ nav{
     padding:32px;
     margin:auto;
 }
+
 .box{
     margin-bottom:32px;
 }
@@ -73,11 +76,11 @@ nav{
     font-weight:300;
 }
 
-.box_brand {
+.box_brand{
     grid-area: brand;
 }
 
-.box_link {
+.box_link{
     width: 100%;
     grid-area: link;
     text-align: center;
@@ -112,10 +115,19 @@ nav{
     max-height:100%;
 }
 
-.card-content{
-    min-height:280px;
+@media only screen and (min-width: 992px) {
+    .card-content{
+        min-height:400px;
+    }
 }
 
 .kitty, .linkedIn{
     max-width:64px;
 }
+
+iframe{
+    pointer-events: none;
+  }
+  .carousel-item.active iframe{
+    pointer-events: auto;
+  }
