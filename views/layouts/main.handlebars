@@ -108,7 +108,11 @@
                     password: $("#password").val().trim(),
                     type: $("#type").val().trim()
                 }
-            })
+            }).then(data => {
+                window.location.href = data;
+            }).catch(err => {
+                alert(err);
+            });
         })
     })
 </script>
