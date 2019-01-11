@@ -19,6 +19,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
+    
     <title>Upstyle</title>
 </head>
 
@@ -84,94 +85,11 @@
     {{{body}}}
 
     <script> M.AutoInit();</script>
+
 </body>
+<script src="./js/management.js"></script>
 <script>
-    $(document).ready(function () {
-
-        $("#editsave").on("click", function (e) {
-            e.preventDefault();
-            var myvar = $("#editform").serialize();
-
-
-<<<<<<< HEAD
-            console.log(myvar.id);
-            updateItem(myvar, $("#edititem").val());
-        })
-=======
-
->>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
-        $("body").on("click", ".edit", function () {
-            console.log($(this).data("id"));
-            getItem($(this).data("id"));
-        })
-        $("body").on("click", ".delete", function () {
-            console.log($(this).data("id"));
-            // logic to delete the item
-            var question = confirm("are you sure you want to delete?");
-            if (question) {
-                deleteItem($(this).data("id"));
-            }
-
-        })
-
-<<<<<<< HEAD
-        function getItem(itemId) {
-            $.ajax({
-                url: '/products/getitem/' + itemId,
-                type: 'GET',
-
-
-            }).then(function (data) {
-                console.log(data[0]);
-                $("#item").val(data[0].Ptype);
-                $("#size").val(data[0].size);
-                $("#color").val(data[0].color);
-                $("#imgUrl").val(data[0].imgUrl);
-                $("#productUrl").val(data[0].productUrl);
-                $("#price").val(data[0].price);
-                $("#occasion").val(data[0].occasion);
-                $("#gender").val(data[0].gender);
-                $("#brand").val(data[0].brand);
-                $("#edititem").val(data[0].id);
-
-            })
-        }
-        function updateItem(argData, argId) {
-
-            $.ajax({
-                url: '/products/update/' + argId,
-                type: 'PUT',
-                data: argData
-            }).then(function (data) {
-                console.log(data);
-                window.location.reload();
-
-            })
-        }
-        function deleteItem(itemId) {
-            $.ajax({
-                url: '/products/delete/' + itemId,
-                type: 'DELETE',
-
-            }).then(data => {
-                console.log(data);
-                window.location.reload();
-            })
-        }
-=======
-        $("#login").on("click", () => {
-            $.ajax({
-                method: "POST",
-                url: "/login",
-                data: {
-                    email: $("#username").val().trim(),
-                    password: $("#password").val().trim(),
-                    type: $("#type").val().trim()
-                }
-            })
-        })
->>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
-    })
+    
 </script>
 
 </html>

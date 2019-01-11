@@ -8,20 +8,11 @@ var router = express.Router();
 var db = require('../models');
 
 // home 
-<<<<<<< HEAD
-router.get('/', function (req, res) {
-    db.Product.findAll({limit: 10}).then((data) => {
-        console.log(data.length);
-        res.render('index', {
-            results: data
-        });
-=======
 router.get('/', async function (req, res) {
     var data = await db.Product.findAll({})
     console.log(data[0]);
     res.render('index', {
         results: data
->>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
     })
 });
 

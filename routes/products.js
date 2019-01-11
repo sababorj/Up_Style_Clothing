@@ -23,11 +23,11 @@ router.get('/getitem/:id', async function (req, res, next) {
     res.send(data);
 
 })
-router.put('/update/:id', (req, res, next) => {
+router.put('/update/:id', async function (req, res, next)  {
 
     console.log(req.body);
     console.log(req.params.id);
-    db.Product.update({
+   var result = await db.Product.update({
         Ptype: req.body.Ptype,
         size: req.body.size,
         color: req.body.color,
@@ -41,7 +41,7 @@ router.put('/update/:id', (req, res, next) => {
      {where: {id: req.params.id}}
     )
 
-    res.send(200);
+    res.sendStatus(200);
 });
 router.delete('/delete/:id', async function (req, res, next) {
   
@@ -51,12 +51,25 @@ router.delete('/delete/:id', async function (req, res, next) {
         }
     })
 
-    res.send(200);
+    res.sendStatus(200);
 });
-router.post('/add', (req, res, next) => {
+router.post('/add',async function(req, res, next) {
+var results = await db.Product.create({
+    Ptype: req.body.Ptype,
+        size: req.body.size,
+        color: req.body.color,
+        imgUrl: req.body.imgUrl,
+        productUrl: req.body.productUrl,
+        price: req.body.price,
+        occasion: req.body.occasion,
+        gender: req.body.gender,
+        brand: req.body.brand,
+        height:"tall"
+        //missing height  in front end input 
 
-    console.log(req.body);
-    res.send(200);
+})
+    
+    res.redirect("/products");
 
 });
 
