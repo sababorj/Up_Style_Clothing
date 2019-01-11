@@ -70,50 +70,56 @@
 
                 </table>
                 <!-- Modal Structure -->
-                <div id="modalEdit" class="modal black-text signup-form">
+                <div id="modalEdit" class="modal black-text signup-form modal-form">
 
                     <h2>Edit Item</h2>
                     <form action="" id="editform">
-                        <div class="input-field col s12">
-                            <input placeholder="item" id="item" name="Ptype" type="text" class="validate">
-                            <label for="item"></label>
-                        </div>
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="col s12">
+                                <input placeholder="item" id="item" name="Ptype" type="text" class="validate">
+                                <label for="item"></label>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col s3">
                                 <input placeholder="size" id="size" name="size" type="text" class="validate">
                                 <label for="size"></label>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="col s3">
                                 <input placeholder="color" id="color" name="color" type="text" class="validate">
                                 <label for="color"></label>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input placeholder="imgUrl" id="imgUrl" name="imgUrl" type="text" class="validate">
-                                <label for="imgUrl"></label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="productUrl" id="productUrl" name="productUrl" type="text" class="validate">
-                                <label for="productUrl"></label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
+                            <div class="col s3">
                                 <input placeholder="price" id="price" name="price" type="text" class="validate numberandperiod">
                                 <label for="price"></label>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="col s3">
                                 <input placeholder="occasion" id="occasion" name="occasion" type="text" class="validate">
                                 <label for="occasion"></label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="col s12">
+                                <input placeholder="imgUrl" id="imgUrl" name="imgUrl" type="text" class="validate">
+                                <label for="imgUrl"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col s12">
+                                <input placeholder="productUrl" id="productUrl" name="productUrl" type="text" class="validate">
+                                <label for="productUrl"></label>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col s6">
                                 <input placeholder="gender" id="gender" name="gender" type="text" class="validate">
                                 <label for="gender"></label>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="col s6">
                                 <input placeholder="brand" id="brand" name="brand" type="text" class="validate">
                                 <label for="brand"></label>
                             </div>
@@ -122,63 +128,66 @@
                             <button class="btn waves-effect waves-light red modal-close" id="editsave" type="submit"
                                 name="save">Save
                             </button>
-                            <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
+                            <button class="btn waves-effect waves-light red modal-close" id="close" type="button" name="close">Close
                             </button>
                         </div>
                     </form>
                 </div>
-                <div id="modalAdd" class="modal black-text signup-form">
+                <div id="modalAdd" class="modal black-text signup-form modal-form">
                     <h2>Add Item</h2>
                     <input type="hidden" id="edititem" name="id" value="">
-                    <div class="input-field col s12">
+                    <div class="col s12">
                         <form action="/products/add" method="post">
-                            <input placeholder="item" id="item" name="Ptype" type="text" class="validate">
+                            <input placeholder="item" id="citem" name="Ptype" type="text" class="validate">
                             <label for="item"></label>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="size" id="size" name="size" type="text" class="validate">
+                        <div class="col s3">
+                            <input placeholder="size" id="csize" name="size" type="text" class="validate">
                             <label for="size"></label>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="color" id="color" name="color" type="text" class="validate">
+                        <div class="col s3">
+                            <input placeholder="color" id="ccolor" name="color" type="text" class="validate">
                             <label for="color"></label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="imgUrl" id="imgUrl" name="imgUrl" type="text" class="validate">
-                            <label for="imgUrl"></label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="productUrl" id="productUrl" name="productUrl" type="text" class="validate">
-                            <label for="productUrl"></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="price" id="price"  name="price" type="text" class="validate numberandperiod">
+                        <div class="col s3">
+                            <input placeholder="price" id="cprice" name="price" type="text" class="validate numberandperiod">
                             <label for="price"></label>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="occasion" id="occasion"  name="occasion" type="text" class="validate">
+                        <div class="col s3">
+                            <input placeholder="occasion" id="coccasion" name="occasion" type="text" class="validate">
                             <label for="occasion"></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="gender" id="gender" name="gender" type="text" class="validate">
+                        <div class="col s12">
+                            <input placeholder="imgUrl" id="cimgUrl" name="imgUrl" type="text" class="validate">
+                            <label for="imgUrl"></label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col s12">
+                            <input placeholder="productUrl" id="cproductUrl" name="productUrl" type="text" class="validate">
+                            <label for="productUrl"></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <input placeholder="gender" id="cgender" name="gender" type="text" class="validate">
                             <label for="gender"></label>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="brand" id="brand" name="brand" type="text" class="validate">
+                        <div class="col s6">
+                            <input placeholder="brand" id="cbrand" name="brand" type="text" class="validate">
                             <label for="brand"></label>
                         </div>
                     </div>
                     <div class="row right">
                         <button class="btn waves-effect waves-light red modal-close" type="submit">Add
                         </button>
-                        <button class="btn waves-effect waves-light red modal-close" type="submit">Close
+                        <button class="btn waves-effect waves-light red modal-close" type="button">Close
                         </button>
                         </form>
                     </div>
