@@ -9,16 +9,26 @@ var db = require('../models');
 
 // home 
 router.get('/', async function (req, res) {
-   var data = await db.Product.findAll({})
-        console.log(data[0]);
-        res.render('index', {
-            results: data
+    var data = await db.Product.findAll({})
+    console.log(data[0]);
+    res.render('index', {
+        results: data
     })
 });
 
+//login 
+router.post("/login", passport.authenticate("local"), function (req, res) {
+    if (req.body.type === 'client') {
+        res.json("/profile");
+    } else {
+        res.json("/product");
+    }
+
+})
 
 // profile
 router.get('/profile', authenticated, async function (req, res) {
+
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
@@ -31,41 +41,42 @@ router.get('/profile', authenticated, async function (req, res) {
     var result = await db.Product.findAll({
         where: {
             [Op.and]: [{
-                    price: {
-                        [Op.gt]: Pref[0].minPrice,
-                        [Op.lt]: Pref[0].maxPrice
-                    }
-                },
-                {
-                    gender: {
-                        [Op.like]: `%${Pref[0].gender}%`
-                    }
-                },
-                {
-                    [Op.or]: [{
-                            size: {
-                                [Op.like]: `%${Pref[0].size}%`
-
-                            }
-                        },
-                        {
-                            color: Pref[0].color
-                        },
-                        {
-                            height: {
-                                [Op.like]: `%${Pref[0].height}%`
-                            }
-                        },
-                        {
-                            occasion: {
-                                [Op.like]: `%${Pref[0].occasion}%`
-                            }
-                        }
-                    ]
+                price: {
+                    [Op.gt]: Pref[0].minPrice,
+                    [Op.lt]: Pref[0].maxPrice
                 }
+            },
+            {
+                gender: {
+                    [Op.like]: `%${Pref[0].gender}%`
+                }
+            },
+            {
+                [Op.or]: [{
+                    size: {
+                        [Op.like]: `%${Pref[0].size}%`
+
+                    }
+                },
+                {
+                    color: Pref[0].color
+                },
+                {
+                    height: {
+                        [Op.like]: `%${Pref[0].height}%`
+                    }
+                },
+                {
+                    occasion: {
+                        [Op.like]: `%${Pref[0].occasion}%`
+                    }
+                }
+                ]
+            }
             ]
         }
     })
+
     // show result
     if (result.length > 0) {
         res.render('index', {
@@ -75,7 +86,7 @@ router.get('/profile', authenticated, async function (req, res) {
     } else {
         var Not = {
             Found: 1,
-            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"     
+            error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
         res.render('index', {
             Not: Not,
@@ -119,15 +130,9 @@ router.post('/register', async function (req, res) {
         await db.User.create({
             email: req.body.email,
             password: req.body.password,
-            userType: req.body.type
+            userType: "client"
         });
-
-        if (req.body.type === 'client') {
-            // redirect to login wout for authentication and starting session 
-            res.redirect(307, "/login/newclient");
-        } else {
-            res.redirect(307, "/login/admin");
-        }
+        res.redirect(307, "/login/newclient");
     } catch (e) {
         res.status(400).send(e);
     }
@@ -135,29 +140,67 @@ router.post('/register', async function (req, res) {
 
 // preferences
 router.post('/preferences', authenticated, async function (req, res) {
-    db.Preference.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        size: req.body.size,
-        height: req.body.height,
-        color: req.body.color,
-        minPrice: req.body.minprice,
-        maxPrice: req.body.maxprice,
-        occasion: req.body.occasion,
-        gender: req.body.gender,
-        UserId: req.user.id
-    }).then((respo) => {
-        res.redirect('/profile');
-    })
+    var prevPref = await db.Preference.findAll({
+        where: {
+            UserId: req.user.id
+        }
+    });
+    if (prevPref.length > 0) {
+        db.Preference.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            size: req.body.size,
+            height: req.body.height,
+            color: req.body.color,
+            minPrice: req.body.minprice,
+            maxPrice: req.body.maxprice,
+            occasion: req.body.occasion,
+            gender: req.body.gender,
+            UserId: req.user.id
+        }, {
+                where: {
+                    UserId: req.user.id
+                }
+            }).then((respo) => {
+                res.redirect('/profile');
+            }).catch(err => {
+                res.status(400).send(err);
+            });
+    } else {
+        db.Preference.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            size: req.body.size,
+            height: req.body.height,
+            color: req.body.color,
+            minPrice: req.body.minprice,
+            maxPrice: req.body.maxprice,
+            occasion: req.body.occasion,
+            gender: req.body.gender,
+            UserId: req.user.id
+        }).then((respo) => {
+            res.redirect('/profile');
+        }).catch(err => {
+            res.status(400).send(err);
+        });
+    }
 });
 
-router.get('/preferences', authenticated, function (req, res) {
-
+router.get('/preferences', authenticated, (req, res) => {
     res.render('preferences', {
-        user: req.user
+        user: req.user, newclient: true
     });
 });
 
+// setting
+router.get('/setting', authenticated, async (req, res) => {
+    var initPref = await db.Preference.findOne({
+        where: {
+            UserId: req.user.id
+        }
+    })
+    res.render('preferences', { initPref: initPref })
+})
 
 // logout
 router.get('/logout', (req, res) => {

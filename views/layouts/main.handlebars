@@ -19,6 +19,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
+    
     <title>Upstyle</title>
 </head>
 
@@ -35,14 +36,14 @@
                     <div class="right">
                         <ul>
                             {{#if user}}
-                            <li><a href="/settings" class="black-text">Setting</a></li>
-                            <li><a href="/user/logout" class="black-text">Logout</a></li>
+                            <li><a href="/setting" class="black-text">Setting</a></li>
+                            <li><a href="/logout" class="black-text">Logout</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{/if}}
                             {{#unless user}}
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
-                           {{/unless}}
+                            {{/unless}}
 
                         </ul>
                     </div>
@@ -56,11 +57,18 @@
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="text" class="validate">
+                        <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
+                    <div class="form-group input-field">
+                        <select class="form-control" id="type" name="size">
+                            <option value="" disabled selected>Choose your type</option>
+                            <option>client</option>
+                            <option>admin</option>
+                        </select>
+                    </div>
                     <div class="col s12">
-                        <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
+                        <button class="modal-close btn waves-effect waves-light red" type="submit" id="login" name="action">Login</button>
                     </div>
                     <div class="col s12 login-help">
                         <a href="/register" class="red-text modal-trigger">No account? Register here.</a>
@@ -77,22 +85,41 @@
     {{{body}}}
 
     <script> M.AutoInit();</script>
+
 </body>
+<script src="./js/management.js"></script>
 <script>
+
     $(document).ready(function () {
 
 
 
 
-    $("body").on("click", ".edit", function () {
-        console.log($(this).data("id"));
-    })
-    $("body").on("click", ".delete", function () {
-        console.log($(this).data("id"));
+        $("body").on("click", ".edit", function () {
+            console.log($(this).data("id"));
+        })
+        $("body").on("click", ".delete", function () {
+            console.log($(this).data("id"));
+        })
 
+        $("#login").on("click", (e) => {
+            e.preventDefault();
+            $.ajax({
+                method: "POST",
+                url: "/login",
+                data: {
+                    email: $("#username").val().trim(),
+                    password: $("#password").val().trim(),
+                    type: $("#type").val().trim()
+                }
+            }).then(data => {
+                window.location.href = data;
+            }).catch(err => {
+                alert(err);
+            });
+        })
     })
 
-    })
 </script>
 
 </html>
