@@ -19,9 +19,9 @@ router.get('/', async function (req, res) {
 //login 
 router.post("/login", passport.authenticate("local"), function (req, res) {
     if (req.body.type === 'client') {
-        res.redirect("/profile");
+        res.json("/profile");
     } else {
-        res.redirect('/product')
+        res.json("/product");
     }
 
 })
@@ -88,12 +88,10 @@ router.get('/profile', authenticated, async function (req, res) {
             Found: 1,
             error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
-        console.log("I am here before render");
         res.render('index', {
             Not: Not,
             user: req.user
         })
-        console.log("I am here after render");
     }
 })
 // about
@@ -165,7 +163,9 @@ router.post('/preferences', authenticated, async function (req, res) {
                 }
             }).then((respo) => {
                 res.redirect('/profile');
-            })
+            }).catch(err => {
+                res.status(400).send(err);
+            });
     } else {
         db.Preference.create({
             firstName: req.body.firstName,
@@ -180,7 +180,9 @@ router.post('/preferences', authenticated, async function (req, res) {
             UserId: req.user.id
         }).then((respo) => {
             res.redirect('/profile');
-        })
+        }).catch(err => {
+            res.status(400).send(err);
+        });
     }
 });
 
