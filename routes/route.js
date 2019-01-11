@@ -8,18 +8,36 @@ var router = express.Router();
 var db = require('../models');
 
 // home 
+<<<<<<< HEAD
 router.get('/', function (req, res) {
     db.Product.findAll({limit: 10}).then((data) => {
         console.log(data.length);
         res.render('index', {
             results: data
         });
+=======
+router.get('/', async function (req, res) {
+    var data = await db.Product.findAll({})
+    console.log(data[0]);
+    res.render('index', {
+        results: data
+>>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
     })
 });
 
+//login 
+router.post("/login",  passport.authenticate("local"), function (req, res){
+      if (req.body.type === 'client'){
+        console.log(req.user.id)
+        res.redirect("/profile");
+    } else {
+        res.redirect('/product')
+    }
+
+})
 
 // profile
-router.get('/user/profile', authenticated, async function (req, res) {
+router.get('/profile', authenticated, async function (req, res) {
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
@@ -32,45 +50,46 @@ router.get('/user/profile', authenticated, async function (req, res) {
     var result = await db.Product.findAll({
         where: {
             [Op.and]: [{
-                    price: {
-                        [Op.gt]: Pref[0].minPrice,
-                        [Op.lt]: Pref[0].maxPrice
-                    }
-                },
-                {
-                    gender: {
-                        [Op.like]: `%${Pref[0].gender}%`
-                    }
-                },
-                {
-                    [Op.or]: [{
-                            size: {
-                                [Op.like]: `%${Pref[0].size}%`
-
-                            }
-                        },
-                        {
-                            color: Pref[0].color
-                        },
-                        {
-                            height: {
-                                [Op.like]: `%${Pref[0].height}%`
-                            }
-                        },
-                        {
-                            occasion: {
-                                [Op.like]: `%${Pref[0].occasion}%`
-                            }
-                        }
-                    ]
+                price: {
+                    [Op.gt]: Pref[0].minPrice,
+                    [Op.lt]: Pref[0].maxPrice
                 }
+            },
+            {
+                gender: {
+                    [Op.like]: `%${Pref[0].gender}%`
+                }
+            },
+            {
+                [Op.or]: [{
+                    size: {
+                        [Op.like]: `%${Pref[0].size}%`
+
+                    }
+                },
+                {
+                    color: Pref[0].color
+                },
+                {
+                    height: {
+                        [Op.like]: `%${Pref[0].height}%`
+                    }
+                },
+                {
+                    occasion: {
+                        [Op.like]: `%${Pref[0].occasion}%`
+                    }
+                }
+                ]
+            }
             ]
         }
     })
     // show result
     if (result.length > 0) {
         res.render('index', {
-            results: result
+            results: result,
+            user: req.user
         })
     } else {
         var Not = {
@@ -78,7 +97,8 @@ router.get('/user/profile', authenticated, async function (req, res) {
             error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
         res.render('index', {
-            Not: Not
+            Not: Not,
+            user: req.user
         })
     }
 })
@@ -99,10 +119,10 @@ router.post('/login/:type', passport.authenticate("local"), function (req, res) 
             res.redirect('/preferences');
             break;
         case "client":
-            res.redirect("/user/profile");
+            res.redirect("/profile");
             break;
         case "admin":
-            res.redirect("/products")
+            res.redirect("/products");
     }
 
 });
@@ -118,15 +138,9 @@ router.post('/register', async function (req, res) {
         await db.User.create({
             email: req.body.email,
             password: req.body.password,
-            userType: req.body.type
+            userType: "client"
         });
-
-        if (req.body.type === 'client') {
-            // redirect to login wout for authentication and starting session 
-            res.redirect(307, "/login/newclient");
-        } else {
-            res.redirect(307, "/login/admin");
-        }
+        res.redirect(307, "/login/newclient");
     } catch (e) {
         res.status(400).send(e);
     }
@@ -146,18 +160,20 @@ router.post('/preferences', authenticated, async function (req, res) {
         gender: req.body.gender,
         UserId: req.user.id
     }).then((respo) => {
-        res.redirect('/user/profile')
+        res.redirect('/profile');
     })
 });
 
 router.get('/preferences', authenticated, function (req, res) {
-    console.log(req.user);
-    res.render('preferences');
+
+    res.render('preferences', {
+        user: req.user
+    });
 });
 
 
 // logout
-router.get('/user/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.logOut();
     res.redirect("/")
 });

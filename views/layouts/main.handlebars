@@ -28,20 +28,21 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m3">
-                    <img src="./images/logo.svg" class="logo-img">
+                    <a href="/"><img src="./images/logo.svg" class="logo-img"></a>
 
                 </div>
                 <div class="col s12 m9">
                     <div class="right">
                         <ul>
-                            {{!-- {{#if loggedIn}}
-                            <li><a href="/settings" class="black-text">Preferences</a></li>
+                            {{#if user}}
+                            <li><a href="/settings" class="black-text">Setting</a></li>
                             <li><a href="/logout" class="black-text">Logout</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
-                            {{#else}} --}}
+                            {{/if}}
+                            {{#unless user}}
                             <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
-                            {{!-- {{/if}} --}}
+                            {{/unless}}
 
                         </ul>
                     </div>
@@ -58,15 +59,15 @@
                         <input id="password" type="text" class="validate">
                         <label for="password">Password</label>
                     </div>
-                    <div class="col s12">
-                        <label for="clientType">userType:</label>
-                        <select class="form-control" id="clientType" name="type">
+                    <div class="form-group input-field">
+                        <select class="form-control" id="type" name="size">
+                            <option value="" disabled selected>Choose your type</option>
                             <option>client</option>
                             <option>admin</option>
                         </select>
                     </div>
                     <div class="col s12">
-                        <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
+                        <button class="modal-close btn waves-effect waves-light red" type="submit" id="login" name="action">Login</button>
                     </div>
                     <div class="col s12 login-help">
                         <a href="/register" class="red-text modal-trigger">No account? Register here.</a>
@@ -92,9 +93,13 @@
             var myvar = $("#editform").serialize();
 
 
+<<<<<<< HEAD
             console.log(myvar.id);
             updateItem(myvar, $("#edititem").val());
         })
+=======
+
+>>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
         $("body").on("click", ".edit", function () {
             console.log($(this).data("id"));
             getItem($(this).data("id"));
@@ -109,6 +114,7 @@
 
         })
 
+<<<<<<< HEAD
         function getItem(itemId) {
             $.ajax({
                 url: '/products/getitem/' + itemId,
@@ -152,6 +158,19 @@
                 window.location.reload();
             })
         }
+=======
+        $("#login").on("click", () => {
+            $.ajax({
+                method: "POST",
+                url: "/login",
+                data: {
+                    email: $("#username").val().trim(),
+                    password: $("#password").val().trim(),
+                    type: $("#type").val().trim()
+                }
+            })
+        })
+>>>>>>> 3c074f3aa9441228423d34bd6659ae437f51b9d5
     })
 </script>
 
