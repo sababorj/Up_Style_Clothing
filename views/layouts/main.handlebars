@@ -87,16 +87,71 @@
 <script>
     $(document).ready(function () {
 
+        $("#editsave").on("click", function (e) {
+            e.preventDefault();
+            var myvar = $("#editform").serialize();
 
+
+            console.log(myvar.id);
+            updateItem(myvar, $("#edititem").val());
+        })
         $("body").on("click", ".edit", function () {
             console.log($(this).data("id"));
+            getItem($(this).data("id"));
         })
         $("body").on("click", ".delete", function () {
             console.log($(this).data("id"));
+            // logic to delete the item
+            var question = confirm("are you sure you want to delete?");
+            if (question) {
+                deleteItem($(this).data("id"));
+            }
 
         })
 
+        function getItem(itemId) {
+            $.ajax({
+                url: '/products/getitem/' + itemId,
+                type: 'GET',
 
+
+            }).then(function (data) {
+                console.log(data[0]);
+                $("#item").val(data[0].Ptype);
+                $("#size").val(data[0].size);
+                $("#color").val(data[0].color);
+                $("#imgUrl").val(data[0].imgUrl);
+                $("#productUrl").val(data[0].productUrl);
+                $("#price").val(data[0].price);
+                $("#occasion").val(data[0].occasion);
+                $("#gender").val(data[0].gender);
+                $("#brand").val(data[0].brand);
+                $("#edititem").val(data[0].id);
+
+            })
+        }
+        function updateItem(argData, argId) {
+
+            $.ajax({
+                url: '/products/update/' + argId,
+                type: 'PUT',
+                data: argData
+            }).then(function (data) {
+                console.log(data);
+                window.location.reload();
+
+            })
+        }
+        function deleteItem(itemId) {
+            $.ajax({
+                url: '/products/delete/' + itemId,
+                type: 'DELETE',
+
+            }).then(data => {
+                console.log(data);
+                window.location.reload();
+            })
+        }
     })
 </script>
 

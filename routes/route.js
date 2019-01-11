@@ -9,8 +9,8 @@ var db = require('../models');
 
 // home 
 router.get('/', function (req, res) {
-    db.Product.findAll({}).then((data) => {
-        console.log(data[0]);
+    db.Product.findAll({limit: 10}).then((data) => {
+        console.log(data.length);
         res.render('index', {
             results: data
         });

@@ -13,11 +13,12 @@
             </li>
         </ul>
         <a href="#" data-target="slide-out" class="btn red sidenav-trigger">Admin</a>
-        
+
         <div class="col s12">
 
             <h1>Items Management</h1>
-        <a class="btn-floating btn-large waves-effect waves-light right red modal-trigger" href="#modalAdd" style=""><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light right red modal-trigger" href="#modalAdd" style=""><i
+                    class="material-icons">add</i></a>
 
             <div id="comments">
                 <table class="responsive-table striped">
@@ -70,63 +71,67 @@
                 </table>
                 <!-- Modal Structure -->
                 <div id="modalEdit" class="modal black-text signup-form">
-                    <h2>Edit Item</h2>
 
-                    <div class="input-field col s12">
-                        <input placeholder="item" id="item" type="text" class="validate">
-                        <label for="item"></label>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="size" id="size" type="text" class="validate">
-                            <label for="size"></label>
+                    <h2>Edit Item</h2>
+                    <form action="" id="editform">
+                        <div class="input-field col s12">
+                            <input placeholder="item" id="item" name="Ptype" type="text" class="validate">
+                            <label for="item"></label>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="color" id="color" type="text" class="validate">
-                            <label for="color"></label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="size" id="size" name="size" type="text" class="validate">
+                                <label for="size"></label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="color" id="color" name="color" type="text" class="validate">
+                                <label for="color"></label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="imgUrl" id="imgUrl" type="text" class="validate">
-                            <label for="imgUrl"></label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="imgUrl" id="imgUrl" name="imgUrl" type="text" class="validate">
+                                <label for="imgUrl"></label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="productUrl" id="productUrl" name="productUrl" type="text" class="validate">
+                                <label for="productUrl"></label>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="productUrl" id="productUrl" type="text" class="validate">
-                            <label for="productUrl"></label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="price" id="price" name="price" type="text" class="validate">
+                                <label for="price"></label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="occasion" id="occasion"  name="occasion" type="text" class="validate">
+                                <label for="occasion"></label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="price" id="price" type="text" class="validate">
-                            <label for="price"></label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="gender" id="gender"  name="gender" type="text" class="validate">
+                                <label for="gender"></label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="brand" id="brand"  name="brand" type="text" class="validate">
+                                <label for="brand"></label>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <input placeholder="occasion" id="occasion" type="text" class="validate">
-                            <label for="occasion"></label>
+                        <div class="row right">
+                            <button class="btn waves-effect waves-light red modal-close" id="editsave" type="submit"
+                                name="save">Save
+                            </button>
+                            <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
+                            </button>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="gender" id="gender" type="text" class="validate">
-                            <label for="gender"></label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="brand" id="brand" type="text" class="validate">
-                            <label for="brand"></label>
-                        </div>
-                    </div>
-                    <div class="row right">
-                        <button class="btn waves-effect waves-light red modal-close" id="save" type="submit" name="save">Save
-                        </button>
-                        <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
-                        </button>
-                    </div>
+                    </form>
                 </div>
                 <div id="modalAdd" class="modal black-text signup-form">
                     <h2>Edit Item</h2>
-
+                    <input type="hidden" id="edititem" name="id" value="">
                     <div class="input-field col s12">
+
                         <input placeholder="item" id="item" type="text" class="validate">
                         <label for="item"></label>
                     </div>
@@ -171,7 +176,7 @@
                         </div>
                     </div>
                     <div class="row right">
-                        <button class="btn waves-effect waves-light red modal-close" id="save" type="submit" name="save">Save
+                        <button class="btn waves-effect waves-light red modal-close" id="addnewsave" type="submit" name="save">Save
                         </button>
                         <button class="btn waves-effect waves-light red modal-close" id="close" type="submit" name="close">Close
                         </button>
