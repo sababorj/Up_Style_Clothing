@@ -5,160 +5,166 @@
         <div class="row center">
             <h5 class="header col s12 light">"You can have anything you want if you dress for it." -Edith Head</h5>
         </div>
-        <div id="player"></div>
-<div class = "container"></div>
-        <script>
-            // loads the IFrame Player API code asynchronously.
-            var tag = document.createElement('script');
+        {{!-- Carousel --}}
 
-            tag.src = "https://www.youtube.com/iframe_api";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-            //  creates iframe and YouTube player after API code downloads
-            var player;
-            function onYouTubeIframeAPIReady() {
-                player = new YT.Player('player', {
-                    height: '390',
-                    width: '640',
-                    videoId: '46pfBktgx_o',
-                    events: {
-                        'onReady': onPlayerReady,
-                        'onStateChange': onPlayerStateChange
-                    }
-                });
-            }
-
-            // API will call this function when the video player is ready.
-            function onPlayerReady(event) {
-                event.target.playVideo();
-            }
-
-            //    The function indicates that when playing a video (state=1),
-
-            var done = false;
-            function onPlayerStateChange(event) {
-                if (event.data == YT.PlayerState.PLAYING && !done) {
-                    setTimeout(stopVideo, 398000);
-                    done = true;
-                }
-            }
-            function stopVideo() {
-                player.stopVideo();
-            }
-        </script>
-
-    </div>
-</div>
-{{!-- mission statement --}}
-<div class="container">
-    <div class="row center">
-        <h5 class="header col s12 light">It’s our mission to change the way people find clothes they love by combining
-            technology with the personal touch of seasoned style experts. The upStyle experience is not merely
-            curated—it’s
-            truly personalized to you. We’re here to help you save time, look great and evolve your personal style over
-            time.</h5>
-    </div>
-</div>
-{{!-- team cards --}}
-<div class="container">
-    <div class="section">
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./images/Saba.jpg">
-                        <span class="card-title">Saba Borjian </span>
+        <div class="container">
+            <div class="row">
+                <div class="carousel">
+                    <a class="carousel-item" href="#one!"><iframe src="https://www.youtube.com/embed/Kf_233UkNO8"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe></a>
+                    <a class="carousel-item" href="#two!"><iframe src="https://www.youtube.com/embed/46pfBktgx_o"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe></a>
+                    <a class="carousel-item" href="#three!"><iframe src="https://www.youtube.com/embed/kU04siQhiXM"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe></a>
+                    <a class="carousel-item" href="#four!"><iframe src="https://www.youtube.com/embed/4Qu5zjW7gPU"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe></a>
+                    <a class="carousel-item" href="#five!"><iframe src="https://www.youtube.com/embed/3I6bu7rjTR4"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe></a>
+                </div>
+            </div>
+        </div>
+        {{!-- end carousel --}}
+        {{!-- Company Mission--}}
+        <div class="container">
+            <div class="row center">
+                <h5 class="header col s12 light">It’s our mission to change the way people find clothes they love by
+                    combining
+                    technology with the personal touch of seasoned style experts. The upStyle experience is not merely
+                    curated—it’s
+                    truly personalized to you. We’re here to help you save time, look great and evolve your personal
+                    style
+                    over
+                    time.</h5>
+            </div>
+        </div>
+        {{!-- end mission --}}
+        {{!-- About Company --}}
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 l6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="./images/Saba.jpg">
+                                <span class="card-title">Saba Borjian </span>
+                            </div>
+                            <div class="card-content">
+                                <p class="light">Okay, so you’re probably going, “Is this like a Noxzema commercial or what?” But
+                                    seriously, whoever said that money can't buy happiness clearly didn't know where to
+                                    go
+                                    shopping. I helped start upFashion to keep people from looking like a full-on
+                                    Monet.
+                                    Shopping with us will ensure that you are always looking your most capable, without
+                                    suffering from buyer's remorse!</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://www.linkedin.com/in/saba-borjian-261b228b/">
+                                    <img src="./images/linkedin-badge.png" class="linkedIn"></a>
+                                <a href="https://github.com/sababorj">
+                                    <img src="./images/Octocat.png" class="kitty"></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>Okay, so you’re probably going, “Is this like a Noxzema commercial or what?” But
-                            seriously, whoever said that money can't buy happiness clearly didn't know where to go
-                            shopping. I helped start upFashion to keep people from looking like a full-on Monet.
-                            Shopping with us will ensure that you are always looking your most capable, without
-                            suffering from buyer's remorse!</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://www.linkedin.com/in/saba-borjian-261b228b/">
-                            <img src="./images/linkedin-badge.png" class="linkedIn"></a>
-                        <a href="https://github.com/sababorj">
-                            <img src="./images/Octocat.png" class="kitty"></a>
+
+
+                    <div class="col s12 l6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="./images/LordBachamort.jpg">
+                                <span class="card-title">Cord Exum </span>
+                            </div>
+                            <div class="card-content">
+                                <p class="light">While I may have my hands full sketching for Chanel, editing newspapers, directing
+                                    short
+                                    films, designing teddy bears and doing voiceovers for Grand Theft Auto, my passion
+                                    for
+                                    fashion has led to a crusade dedicated to helping the fashionably challenged evolve
+                                    into
+                                    the well-dressed beasts they were meant to be.You know that thing when you see
+                                    someone
+                                    cute
+                                    and they smile and your heart kind of goes like warm butter sliding on toast? Well
+                                    that's
+                                    what it's like when I see our happy clients out in the world. Only it's better.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://www.linkedin.com/in/cordexum/">
+                                    <img src="./images/linkedin-badge.png" class="linkedIn"></a>
+                                <a href="https://github.com/exumc">
+                                    <img src="./images/Octocat.png" class="kitty"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./images/LordBachamort.jpg">
-                        <span class="card-title">Cord Exum </span>
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 l6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="./images/Katerine.jpg">
+                                <span class="card-title">Katerine Whattoff-Hall </span>
+                            </div>
+                            <div class="card-content">
+                                <p class="light">Fashion is the most powerful art there is. It's movement, design, and architecture
+                                    all
+                                    in
+                                    one. It shows the world who we are and who we'd like to be. People are always
+                                    surprised
+                                    when they learn what I do, but who better? When your time comes, you're going to be
+                                    spending your eternal afterlife in the same outfit...who wants to spend it
+                                    attracting
+                                    flies
+                                    instead of attention ?!?</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://www.linkedin.com/in/katerinewh/">
+                                    <img src="./images/linkedin-badge.png" class="linkedIn"></a>
+                                <a href="https://github.com/katerinewh">
+                                    <img src="./images/Octocat.png" class="kitty"></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>While I may have my hands full sketching for Chanel, editing newspapers, directing short
-                            films, designing teddy bears and doing voiceovers for Grand Theft Auto, my passion for
-                            fashion has led to a crusade dedicated to helping the fashionably challenged evolve into
-                            the well-dressed beasts they were meant to be.You know that thing when you see someone cute
-                            and they smile and your heart kind of goes like warm butter sliding on toast? Well that's
-                            what it's like when I see our happy clients out in the world. Only it's better.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://www.linkedin.com/in/cordexum/">
-                            <img src="./images/linkedin-badge.png" class="linkedIn"></a>
-                        <a href="https://github.com/exumc">
-                            <img src="./images/Octocat.png" class="kitty"></a>
+
+                    <div class="col s12 l6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="./images/Helder.jpg">
+                                <span class="card-title">Helder Calado </span>
+                            </div>
+                            <div class="card-content">
+                                <p class="light">I grew up in Rhode Island with six brothers, pretending to go to soccer practice
+                                    when I
+                                    was
+                                    really going to sewing class and reading runway magazines under the covers at night
+                                    with a
+                                    flashlight. I'm pretty sure there's a lot more to life than being really, really,
+                                    ridiculously good looking. And I plan on finding out what that is. I care
+                                    desperately
+                                    about
+                                    what I do. Do I know what product I'm selling? No. Do I know what I'm doing today?
+                                    No.
+                                    But
+                                    I'm here, and I'm gonna give it my best shot.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://www.linkedin.com/in/helder-calado-48b539b5/">
+                                    <img src="./images/linkedin-badge.png" class="linkedIn"></a>
+                                <a href="https://github.com/heldercalado">
+                                    <img src="./images/Octocat.png" class="kitty"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{!-- end about --}}
     </div>
-    <div class="section">
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./images/Katerine.jpg">
-                        <span class="card-title">Katerine Whattoff-Hall </span>
-                    </div>
-                    <div class="card-content">
-                        <p>Fashion is the most powerful art there is. It's movement, design, and architecture all in
-                            one. It shows the world who we are and who we'd like to be. People are always surprised
-                            when they learn what I do, but who better? When your time comes, you're going to be
-                            spending your eternal afterlife in the same outfit...who wants to spend it attracting flies
-                            instead of attention ?!?</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://www.linkedin.com/in/katerinewh/">
-                            <img src="./images/linkedin-badge.png" class="linkedIn"></a>
-                        <a href="https://github.com/katerinewh">
-                            <img src="./images/Octocat.png" class="kitty"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./images/Helder.jpg">
-                        <span class="card-title">Helder Calado </span>
-                    </div>
-                    <div class="card-content">
-                        <p>I grew up in Rhode Island with six brothers, pretending to go to soccer practice when I was
-                            really going to sewing class and reading runway magazines under the covers at night with a
-                            flashlight. I'm pretty sure there's a lot more to life than being really, really,
-                            ridiculously good looking. And I plan on finding out what that is. I care desperately about
-                            what I do. Do I know what product I'm selling? No. Do I know what I'm doing today? No. But
-                            I'm here, and I'm gonna give it my best shot.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://www.linkedin.com/in/helder-calado-48b539b5/">
-                            <img src="./images/linkedin-badge.png" class="linkedIn"></a>
-                        <a href="https://github.com/heldercalado">
-                            <img src="./images/Octocat.png" class="kitty"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
 
 </div>
@@ -175,11 +181,12 @@
             <div class="col l6 s12">
                 <h5 class="white-text">Connect to our Project Repo</h5>
                 <ul>
-                    <li><a class="white-text" href="https://github.com/sababorj/Up_Style_Clothing"><img src="./images/Octocat.png"class="kitty"></a></li>
+                    <li><a class="white-text" href="https://github.com/sababorj/Up_Style_Clothing"><img src="./images/Octocat.png"
+                                class="kitty"></a></li>
             </div>
         </div>
         <div class="row">
-             <div class="col l5 24"></div>
+            <div class="col l5 24"></div>
             <img src="./images/CompanyLogo.svg" class="logo-img2">
         </div>
     </div>
