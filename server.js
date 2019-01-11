@@ -9,9 +9,9 @@ var routes = require('./routes/route');
 var productRoutes = require("./routes/products");
 // set server variables
 var app = express();
-var port = process.env.port || 8080;
+var port = process.env.PORT || 8080;
 var syncOptions = {
-    force: false
+    force: true
 };
 
 // set up the middleware

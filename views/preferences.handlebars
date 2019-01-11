@@ -19,7 +19,6 @@
                 {{#if newclient}}
                 <option value="" disabled selected>Choose your option</option>
                 {{/if}}
-                <option>XS</option>
                 <option>S</option>
                 <option>M</option>
                 <option>L</option>
@@ -34,10 +33,10 @@
                 {{#if newclient}}
                 <option value="" disabled selected>Choose your option</option>
                 {{/if}}
-                <option>short</option>
-                <option>normal</option>
-                <option>tall</option>
-                <option>very tall</option>
+                <option>os</option>
+                <option>t</option>
+                <option>a</option>
+                <option>s</option>
             </select>
             <label for="height">Height:</label>
         </div>
@@ -55,9 +54,10 @@
                 <option value="" disabled selected>Choose your option</option>
                 {{/if}}
                 <option>casual</option>
-                <option>formal</option>
-                <option>outdoor</option>
-                <option>work out</option>
+                <option>Business</option>
+                <option>Any</option>
+                <option>Cocktail</option>
+                <option>Formal</option>
             </select>
             <label for="occasion">Occasion:</label>
 
@@ -66,8 +66,8 @@
         <div class="form-group input-field">
             <select class="form-control" id="hender" name="gender">
                 <option>{{initPref.gender}}</option>
-                <option>male</option>
-                <option>female</option>
+                <option>Men</option>
+                <option>Women</option>
             </select>
             <label for="hender">gender:</label>
         </div>
