@@ -18,12 +18,7 @@ router.get('/', async function (req, res) {
 
 //login 
 router.post("/login", passport.authenticate("local"), function (req, res) {
-    if (req.body.type === 'client') {
         res.json("/profile");
-    } else {
-        res.json("/product");
-    }
-
 })
 
 // profile
