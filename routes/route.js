@@ -17,9 +17,8 @@ router.get('/', async function (req, res) {
 });
 
 //login 
-router.post("/login",  passport.authenticate("local"), function (req, res){
-      if (req.body.type === 'client'){
-        console.log(req.user.id)
+router.post("/login", passport.authenticate("local"), function (req, res) {
+    if (req.body.type === 'client') {
         res.redirect("/profile");
     } else {
         res.redirect('/product')
@@ -29,6 +28,7 @@ router.post("/login",  passport.authenticate("local"), function (req, res){
 
 // profile
 router.get('/profile', authenticated, async function (req, res) {
+
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
@@ -76,6 +76,7 @@ router.get('/profile', authenticated, async function (req, res) {
             ]
         }
     })
+
     // show result
     if (result.length > 0) {
         res.render('index', {
@@ -87,10 +88,12 @@ router.get('/profile', authenticated, async function (req, res) {
             Found: 1,
             error: "Unfortunately We have no product that matches your prefereces feel free to change the prefereces on your setting page"
         }
+        console.log("I am here before render");
         res.render('index', {
             Not: Not,
             user: req.user
         })
+        console.log("I am here after render");
     }
 })
 // about
@@ -139,29 +142,63 @@ router.post('/register', async function (req, res) {
 
 // preferences
 router.post('/preferences', authenticated, async function (req, res) {
-    db.Preference.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        size: req.body.size,
-        height: req.body.height,
-        color: req.body.color,
-        minPrice: req.body.minprice,
-        maxPrice: req.body.maxprice,
-        occasion: req.body.occasion,
-        gender: req.body.gender,
-        UserId: req.user.id
-    }).then((respo) => {
-        res.redirect('/profile');
-    })
+    var prevPref = await db.Preference.findAll({
+        where: {
+            UserId: req.user.id
+        }
+    });
+    if (prevPref.length > 0) {
+        db.Preference.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            size: req.body.size,
+            height: req.body.height,
+            color: req.body.color,
+            minPrice: req.body.minprice,
+            maxPrice: req.body.maxprice,
+            occasion: req.body.occasion,
+            gender: req.body.gender,
+            UserId: req.user.id
+        }, {
+                where: {
+                    UserId: req.user.id
+                }
+            }).then((respo) => {
+                res.redirect('/profile');
+            })
+    } else {
+        db.Preference.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            size: req.body.size,
+            height: req.body.height,
+            color: req.body.color,
+            minPrice: req.body.minprice,
+            maxPrice: req.body.maxprice,
+            occasion: req.body.occasion,
+            gender: req.body.gender,
+            UserId: req.user.id
+        }).then((respo) => {
+            res.redirect('/profile');
+        })
+    }
 });
 
-router.get('/preferences', authenticated, function (req, res) {
-
+router.get('/preferences', authenticated, (req, res) => {
     res.render('preferences', {
-        user: req.user
+        user: req.user, newclient: true
     });
 });
 
+// setting
+router.get('/setting', authenticated, async (req, res) => {
+    var initPref = await db.Preference.findOne({
+        where: {
+            UserId: req.user.id
+        }
+    })
+    res.render('preferences', { initPref: initPref })
+})
 
 // logout
 router.get('/logout', (req, res) => {

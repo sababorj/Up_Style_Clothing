@@ -35,7 +35,7 @@
                     <div class="right">
                         <ul>
                             {{#if user}}
-                            <li><a href="/settings" class="black-text">Setting</a></li>
+                            <li><a href="/setting" class="black-text">Setting</a></li>
                             <li><a href="/logout" class="black-text">Logout</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{/if}}
@@ -56,7 +56,7 @@
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="text" class="validate">
+                        <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                     <div class="form-group input-field">
@@ -96,10 +96,10 @@
         })
         $("body").on("click", ".delete", function () {
             console.log($(this).data("id"));
-
         })
 
-        $("#login").on("click", () => {
+        $("#login").on("click", (e) => {
+            e.preventDefault();
             $.ajax({
                 method: "POST",
                 url: "/login",

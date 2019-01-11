@@ -4,16 +4,21 @@
 
         <div class="form-group input-field">
             <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" name="firstName" placeholder="Name" required="required">
+            <input type="text" class="form-control" name="firstName" placeholder="Name" value="{{initPref.firstName}}"
+                required="required">
 
         </div>
         <div class="form-group input-field">
             <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" name="lastName" placeholder="Last Name" required="required">
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="{{initPref.lastName}}"
+                required="required">
         </div>
         <div class="form-group input-field">
             <select class="form-control" id="size" name="size">
+                <option>{{initPref.size}}</option>
+                {{#if newclient}}
                 <option value="" disabled selected>Choose your option</option>
+                {{/if}}
                 <option>XS</option>
                 <option>S</option>
                 <option>M</option>
@@ -25,7 +30,10 @@
 
         <div class="form-group input-field">
             <select class="form-control" id="height" name="height">
+                <option>{{initPref.height}}</option>
+                {{#if newclient}}
                 <option value="" disabled selected>Choose your option</option>
+                {{/if}}
                 <option>short</option>
                 <option>normal</option>
                 <option>tall</option>
@@ -36,11 +44,16 @@
 
         <div class="form-group input-field">
             <label for="color">Color:</label>
-            <input type="text" class="form-control" name="color" placeholder="Color" required="required">
+            <input type="text" class="form-control" name="color" placeholder="Color" value="{{initPref.color}}"
+                required="required">
         </div>
 
         <div class="form-group input-field">
             <select class="form-control" id="occasion" name="occasion">
+                <option>{{initPref.occasion}}</option>
+                {{#if newclient}}
+                <option value="" disabled selected>Choose your option</option>
+                {{/if}}
                 <option>casual</option>
                 <option>formal</option>
                 <option>outdoor</option>
@@ -52,6 +65,7 @@
 
         <div class="form-group input-field">
             <select class="form-control" id="hender" name="gender">
+                <option>{{initPref.gender}}</option>
                 <option>male</option>
                 <option>female</option>
             </select>
@@ -60,11 +74,13 @@
 
         <div class="col-md-6">
             <label for="minprice">Min Price</label>
-            <input type="text" class="form-control" name="minprice" placeholder="min Price" required="required">
+            <input type="text" class="form-control" name="minprice" placeholder="min Price" value="{{initPref.minPrice}}"
+                required="required">
         </div>
         <div class="col-md-6">
             <label for="maxprice">Max Price</label>
-            <input type="text" class="form-control" name="maxprice" placeholder="max Price" required="required">
+            <input type="text" class="form-control" name="maxprice" placeholder="max Price" value="{{initPref.maxPrice}}"
+                required="required">
         </div>
 
         <div class="form-group">
