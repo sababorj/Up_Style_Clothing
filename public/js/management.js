@@ -88,15 +88,4 @@ $(document).ready(function () {
             window.location.reload();
         })
     }
-    $("#login").on("click", () => {
-        $.ajax({
-            method: "POST",
-            url: "/login",
-            data: {
-                email: $("#username").val().trim(),
-                password: $("#password").val().trim(),
-                type: $("#type").val().trim()
-            }
-        })
-    })
 })

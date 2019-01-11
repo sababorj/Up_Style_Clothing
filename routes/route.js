@@ -1,37 +1,43 @@
+// require libreries 
 var authenticated = require('../config/middleware/authenticated');
 var passport = require('../config/passport');
 var sequalize = require('sequelize');
 
+// set up local variables and modules
 var Op = sequalize.Op;
 var express = require("express");
 var router = express.Router();
 var db = require('../models');
 
-// home 
+// home : presents every product in our inventory
 router.get('/', async function (req, res) {
     var data = await db.Product.findAll({})
-    console.log(data[0]);
     res.render('index', {
         results: data
     })
 });
 
-//login 
+// login for registered user : after authentication user is redirected to profile route
 router.post("/login", passport.authenticate("local"), function (req, res) {
         res.json("/profile");
 })
 
-// profile
-router.get('/profile', authenticated, async function (req, res) {
+// login for new user
+router.post('/login/newclient', passport.authenticate("local"), function (req, res) {
+    res.redirect('/preferences');
+}
+);
 
+
+// profile : presents the items which is prefered by user
+router.get('/profile', authenticated, async function (req, res) {
     // find user preferences
     var Pref = await db.Preference.findAll({
         where: {
             UserId: req.user.id
         }
     });
-
-    var Pcolor = Pref[0].color.toUperCase()
+    var Pcolor = Pref[0].color.toUpperCase()
     // this logic will query the product table looking for items with same gender , within price range, and have one of the preferences
     var result = await db.Product.findAll({
         where: {
@@ -56,7 +62,7 @@ router.get('/profile', authenticated, async function (req, res) {
                 height: {
                     [Op.like]: `%${Pref[0].height}%`
                 }
-            }
+            },
             {
                 [Op.or]: [
                 {
@@ -75,7 +81,7 @@ router.get('/profile', authenticated, async function (req, res) {
         }
     })
 
-    // show result
+    // show resultes
     if (result.length > 0) {
         res.render('index', {
             results: result,
@@ -92,30 +98,12 @@ router.get('/profile', authenticated, async function (req, res) {
         })
     }
 })
-// about
+
+// about: information about the company
 router.get('/about', function (req, res) {
     res.render('about');
 });
 
-// admin
-router.get('/admin', function (req, res) {
-    res.render('admin');
-});
-
-// login 
-router.post('/login/:type', passport.authenticate("local"), function (req, res) {
-    switch (req.params.type) {
-        case "newclient":
-            res.redirect('/preferences');
-            break;
-        case "client":
-            res.redirect("/profile");
-            break;
-        case "admin":
-            res.redirect("/products");
-    }
-
-});
 
 // register 
 router.get('/register', function (req, res) {
@@ -130,19 +118,21 @@ router.post('/register', async function (req, res) {
             password: req.body.password,
             userType: "client"
         });
+        // send them to be authenticated
         res.redirect(307, "/login/newclient");
     } catch (e) {
         res.status(400).send(e);
     }
 });
 
-// preferences
+// preferences:
 router.post('/preferences', authenticated, async function (req, res) {
     var prevPref = await db.Preference.findAll({
         where: {
             UserId: req.user.id
         }
     });
+    // update user initial preferences
     if (prevPref.length > 0) {
         db.Preference.update({
             firstName: req.body.firstName,
@@ -161,10 +151,10 @@ router.post('/preferences', authenticated, async function (req, res) {
                 }
             }).then((respo) => {
                 res.redirect('/profile');
-            }).catch(err => {
-                res.status(400).send(err);
-            });
-    } else {
+            })
+    } 
+    // set up user preferences
+    else {
         db.Preference.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -178,9 +168,7 @@ router.post('/preferences', authenticated, async function (req, res) {
             UserId: req.user.id
         }).then((respo) => {
             res.redirect('/profile');
-        }).catch(err => {
-            res.status(400).send(err);
-        });
+        })
     }
 });
 
@@ -190,14 +178,14 @@ router.get('/preferences', authenticated, (req, res) => {
     });
 });
 
-// setting
+// setting : user will be authenticated and then sent to preference rout
 router.get('/setting', authenticated, async (req, res) => {
     var initPref = await db.Preference.findOne({
         where: {
             UserId: req.user.id
         }
     })
-    res.render('preferences', { initPref: initPref })
+    res.render('preferences', { initPref: initPref,  user: req.user })
 })
 
 // logout

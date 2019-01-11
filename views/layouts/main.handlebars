@@ -102,8 +102,7 @@
                 url: "/login",
                 data: {
                     email: $("#username").val().trim(),
-                    password: $("#password").val().trim(),
-                    type: $("#type").val().trim()
+                    password: $("#password").val().trim()
                 }
             }).then(data => {
                 window.location.href = data;
