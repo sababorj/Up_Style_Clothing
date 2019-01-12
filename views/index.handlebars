@@ -9,10 +9,10 @@
         {{/if}}
         <div class="row">
             {{#each results}}
-            <a href="{{results.productUrl}}" class="itemlink">
+            <a href="{{productUrl}}" class="itemlink">
                 <div class="col s12 l4 box">
                     <div class="box_pic">
-                        <img src="{{imgUrl}}" alt="" class="responsive-img">
+                        <img src={{imgUrl}} alt="" class="responsive-img">
                     </div>
                     <div class="box_info">
                         {{!-- <div class="box_description">
@@ -32,7 +32,7 @@
                             <p>Occasion: {{occasion}}</p>
                         </div>
                         <div class="box_brand">
-                            <p>{{results.brand}}</p>
+                            <p>{{brand}}</p>
                         </div>
 
                     </div>
