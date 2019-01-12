@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     {{!-- jquery cdn --}}
@@ -61,13 +63,6 @@
                         <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
-                    <div class="form-group input-field">
-                        <select class="form-control" id="type" name="size">
-                            <option value="" disabled selected>Choose your type</option>
-                            <option>client</option>
-                            <option>admin</option>
-                        </select>
-                    </div>
                     <div class="col s12">
                         <button class="modal-close btn waves-effect waves-light red" type="submit" id="login" name="action">Login</button>
                     </div>
@@ -85,9 +80,10 @@
 
     {{{body}}}
 
-    <script> M.AutoInit();</script>
+    
 
 </body>
+<script> M.AutoInit();</script>
 
 <script>
 
@@ -106,8 +102,7 @@
                 url: "/login",
                 data: {
                     email: $("#username").val().trim(),
-                    password: $("#password").val().trim(),
-                    type: $("#type").val().trim()
+                    password: $("#password").val().trim()
                 }
             }).then(data => {
                 window.location.href = data;

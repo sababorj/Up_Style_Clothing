@@ -46,7 +46,7 @@ typings/
 # Optional eslint cache
 .eslintcache
 .eslintrc
-
+.eslintrc.js
 # Optional REPL history
 .node_repl_history
 

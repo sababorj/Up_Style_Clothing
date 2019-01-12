@@ -8,7 +8,7 @@
     line-height: 1.678rem;
 }
 
-nav {
+nav{
     box-shadow: none;
     margin-top: 8px;
 }
@@ -37,6 +37,7 @@ nav {
 
 .box {
     margin-bottom: 32px;
+
 }
 
 .box:hover {
@@ -76,11 +77,11 @@ nav {
     font-weight: 300;
 }
 
-.box_brand {
+.box_brand{
     grid-area: brand;
 }
 
-.box_link {
+.box_link{
     width: 100%;
     grid-area: link;
     text-align: center;
@@ -144,3 +145,19 @@ ul.dropdown-content.select-dropdown li span {
 
 
 }
+@media only screen and (min-width: 992px) {
+    .card-content{
+        min-height:400px;
+    }
+}
+
+.kitty, .linkedIn{
+    max-width:64px;
+}
+
+iframe{
+    pointer-events: none;
+  }
+  .carousel-item.active iframe{
+    pointer-events: auto;
+  }
