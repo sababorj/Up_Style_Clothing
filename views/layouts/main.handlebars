@@ -9,17 +9,19 @@
         crossorigin="anonymous"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{!-- jquery cdn --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     {{!-- added the link below to use the icons for materialize if not needed later this reference cane be removed --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {{!-- jquery cdn --}}
-
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./js/management.js"></script>
 
     <title>Upstyle</title>
 </head>
@@ -42,7 +44,7 @@
                             <li><a href="/about" class="black-text">About</a></li>
                             {{/if}}
                             {{#unless user}}
-                            <li><a href="#modal1" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
+                            <li><a href="#modal1" id="navlogin" data-dismiss="modal" class="black-text modal-trigger">Login</a></li>
                             <li><a href="/about" class="black-text">About</a></li>
                             {{/unless}}
 
@@ -82,20 +84,16 @@
 
 </body>
 <script> M.AutoInit();</script>
-<script src="./js/management.js"></script>
+
 <script>
 
     $(document).ready(function () {
 
+       
 
 
 
-        $("body").on("click", ".edit", function () {
-            console.log($(this).data("id"));
-        })
-        $("body").on("click", ".delete", function () {
-            console.log($(this).data("id"));
-        })
+       
 
         $("#login").on("click", (e) => {
             e.preventDefault();
