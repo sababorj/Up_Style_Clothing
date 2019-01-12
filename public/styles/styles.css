@@ -132,6 +132,15 @@ ul.dropdown-content.select-dropdown li span {
     min-width: 400px;
     width: 750px;
 }
+
 .row {
-    margin-top:30px;
+    margin-top: 30px;
+}
+
+/* style for the table display box */
+.table-display td{
+    padding: 15px;
+    font-size: 0.9rem;
+
+
 }

@@ -1,5 +1,6 @@
 <!-- Page Layout here -->
 <div class="container">
+
     <div class="row">
         <ul id="slide-out" class="sidenav">
             <li>
@@ -21,63 +22,20 @@
                     class="material-icons">add</i></a>
 
             <div id="comments">
-                <table class="responsive-table striped">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Size</th>
-                            <th>Color</th>
-                            <th>image URL</th>
-                            <th>Product URL</th>
-                            <th>Price</th>
-                            <th>Occasion</th>
-                            <th>Gender</th>
-                            <th>Brand</th>
-                            <th>Edit </th>
-                            <th>Remove</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        {{#each results}}
-                        <tr>
-                            <td>{{Ptype}}</td>
-                            <td>{{size}}</td>
-                            <td>{{color}}</td>
-                            <td>{{imgUrl}}</td>
-                            <td>{{productUrl}}</td>
-                            <td>{{price}}</td>
-                            <td>{{occasion}}</td>
-                            <td>{{gender}}</td>
-                            <td>{{brand}}</td>
-                            <td>
-                                <a class="waves-effect waves-light btn edit red modal-trigger" data-id="{{id}}" href="#modalEdit">
-                                    <i class="Tiny material-icons">edit</i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="waves-effect waves-light btn delete red" data-id="{{id}}">
-                                    <i class="Tiny material-icons">delete</i>
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-                        {{/each}}
-
-                    </tbody>
-
-                </table>
+               
                 <!-- Modal Structure -->
                 <div id="modalEdit" class="modal black-text signup-form modal-form">
 
                     <h2>Edit Item</h2>
                     <form action="" id="editform">
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s10">
                                 <input placeholder="item" id="item" name="Ptype" type="text" class="validate">
                                 <label for="item"></label>
+                            </div>
+                            <div class="col s2">
+                                <input placeholder="Height" id="height" name="height" type="text" class="validate">
+                                <label for="height"></label>
                             </div>
 
                         </div>
@@ -113,7 +71,7 @@
                                 <label for="productUrl"></label>
                             </div>
                         </div>
-                       
+
                         <div class="row">
                             <div class="col s6">
                                 <input placeholder="gender" id="gender" name="gender" type="text" class="validate">
@@ -136,11 +94,18 @@
                 <div id="modalAdd" class="modal black-text signup-form modal-form">
                     <h2>Add Item</h2>
                     <input type="hidden" id="edititem" name="id" value="">
-                    <div class="col s12">
-                        <form action="/products/add" method="post">
-                            <input placeholder="item" id="citem" name="Ptype" type="text" class="validate">
-                            <label for="item"></label>
+                    <div class="row">
+                        <div class="col s10">
+                            <form action="/products/add" method="post">
+                                <input placeholder="item" id="citem" name="Ptype" type="text" class="validate">
+                                <label for="item"></label>
+                        </div>
+                        <div class="col s2">
+                            <input placeholder="Height" id="height" name="height" type="text" class="validate">
+                            <label for="height"></label>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col s3">
                             <input placeholder="size" id="csize" name="size" type="text" class="validate">
@@ -192,9 +157,85 @@
                         </form>
                     </div>
                 </div>
+
+                {{!-- modal login for the products page --}}
+                <!-- Modal Structure -->
+                <div id="modlogin" class="modal black-text signup-form">
+                    <h2>Login</h2>
+
+                    <div class="input-field col s12">
+                        <input placeholder="Username" id="cusername" name=user type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="cpassword" type="password" name="pass" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+
+                    <div class="col s12">
+                        <button class="login btn waves-effect waves-light red" type="button">Login</button>
+                    </div>
+                    <div class="col s12 login-help">
+                        <p class="error-display"></p>
+
+                    </div>
+
+                </div>
             </div>
 
         </div>
 
     </div>
+</div>
+<div class="table-display">
+     <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Height</th>
+                            <th>Color</th>
+                            <th>image URL</th>
+                            <th>Product URL</th>
+                            <th>Price</th>
+                            <th>Occasion</th>
+                            <th>Gender</th>
+                            <th>Brand</th>
+                            <th>Edit </th>
+                            <th>Remove</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {{#each results}}
+                        <tr>
+                            <td>{{Ptype}}</td>
+                            <td>{{size}}</td>
+                            <td>{{height}}</td>
+                            <td>{{color}}</td>
+                            <td>{{imgUrl}}</td>
+                            <td>{{productUrl}}</td>
+                            <td>{{price}}</td>
+                            <td>{{occasion}}</td>
+                            <td>{{gender}}</td>
+                            <td>{{brand}}</td>
+                            <td>
+                                <a class="waves-effect waves-light btn edit red modal-trigger" data-id="{{id}}" href="#modalEdit">
+                                    <i class="Tiny material-icons">edit</i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="waves-effect waves-light btn delete red" data-id="{{id}}">
+                                    <i class="Tiny material-icons">delete</i>
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {{/each}}
+
+                    </tbody>
+
+                </table>
 </div>
