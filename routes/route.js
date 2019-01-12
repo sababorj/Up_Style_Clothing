@@ -12,6 +12,7 @@ var db = require('../models');
 // home : presents every product in our inventory
 router.get('/', async function (req, res) {
     var data = await db.Product.findAll({})
+    console.log("this:"+data[0].productUrl)
     res.render('index', {
         results: data
     })
