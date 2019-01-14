@@ -56,7 +56,7 @@ router.get('/profile', authenticated, async function (req, res) {
                 height: {
                     [Op.like]: `%${Pref[0].height}%`
                 }
-            }
+            },
             {
                 [Op.or]: [
                 {
@@ -92,6 +92,7 @@ router.get('/profile', authenticated, async function (req, res) {
         })
     }
 })
+
 // about
 router.get('/about', function (req, res) {
     res.render('about');
