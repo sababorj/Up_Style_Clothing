@@ -35,30 +35,25 @@ nav{
     margin: auto;
 }
 
-.box{
-    margin-bottom:60px;
+.box {
+    margin-bottom: 32px;
+
 }
 
 .box:hover {
     opacity: .3;
 }
 
+.box img {
+    width: 100%;
+}
+
 .box_pic {
     grid-area: pic;
-    margin-bottom:16px;
-}
-.card .card-image img{
-    height:240px;
-    width: inherit;
-}
-.box_info{
-    position: relative; 
-    bottom:0;
 }
 
 .box_description {
     grid-area: desc;
-  
 }
 
 .box_color {
@@ -71,14 +66,10 @@ nav{
     font-weight: 300;
 }
 
-.box_name{
-    font-weight: 700;
-    padding-bottom:8px;
-}
-
 .box_price {
     grid-area: price;
-    font-weight:400;
+    font-size: 24px;
+    font-weight: 400;
 }
 
 .box_occasion {
@@ -101,62 +92,63 @@ nav{
 }
 
 /* label focus color */
-.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: #f44336  !important;
-   }
-  
-  /* label underline focus color */
-   .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #f44336  !important;
-    box-shadow: 0 1px 0 0 #f44336  !important;
-   }
-
-   /* label focus color */
-.input-field input[type=password]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: #f44336  !important;
-   }
-  
-  /* label underline focus color */
-   .input-field input[type=password]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #f44336  !important;
-    box-shadow: 0 1px 0 0 #f44336  !important;
-   }
-
-   ul.dropdown-content.select-dropdown li span {
-    color: #f44336; 
-}
-   .login-help{
-       margin-top:16px;
-   }
-
-   #modalEdit{
-       max-height:100%;
-   }
-   #modalAdd{
-    max-height:100%;
+.input-field input[type=text]:focus+label,
+.materialize-textarea:focus:not([readonly])+label {
+    color: #f44336 !important;
 }
 
-.card .card-image img{
-    margin:auto;
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #f44336 !important;
+    box-shadow: 0 1px 0 0 #f44336 !important;
 }
 
+ul.dropdown-content.select-dropdown li span {
+    color: #f44336;
+}
+
+.login-help {
+    margin-top: 16px;
+}
+
+#modalEdit {
+    max-height: 100%;
+}
+
+#modalAdd {
+    max-height: 100%;
+}
+
+.card-content {
+    min-height: 280px;
+}
+
+.kitty,
+.linkedIn {
+    max-width: 64px;
+}
+
+.modal-form {
+    min-width: 400px;
+    width: 750px;
+}
+
+.row {
+    margin-top: 30px;
+}
+
+/* style for the table display box */
+.table-display td{
+    padding: 15px;
+    font-size: 0.9rem;
+
+
+}
 @media only screen and (min-width: 992px) {
-    .card-content.aboutus{
+    .card-content{
         min-height:400px;
     }
-
-    .items{
-        height: 520px;
-    }
-    
-    .box{
-        min-height: 320px;
-    }
-    .card.items .card-content{
-        margin-top:8px;
-        padding:16px;
-        height: 100%;
-        }
 }
 
 .kitty, .linkedIn{
