@@ -64,7 +64,7 @@
                         <label for="password">Password</label>
                     </div>
                     <div class="col s12">
-                        <button class="modal-close btn waves-effect waves-light red" type="submit" id="login" name="action">Login</button>
+                        <button class="btn waves-effect waves-light red" type="submit" id="login" name="action">Login</button>
                     </div>
                     <div class="col s12 login-help">
                         <a href="/register" class="red-text modal-trigger">No account? Register here.</a>
@@ -80,7 +80,7 @@
 
     {{{body}}}
 
-    
+
 
 </body>
 <script> M.AutoInit();</script>
@@ -89,11 +89,20 @@
 
     $(document).ready(function () {
 
+<<<<<<< HEAD
+        $("body").on("click", ".edit", function () {
+            console.log($(this).data("id"));
+        })
+        $("body").on("click", ".delete", function () {
+            console.log($(this).data("id"));
+        })
+=======
        
 
 
 
        
+>>>>>>> 1183ec2a7565e5053cca7714dbb1a6b1499a0291
 
         $("#login").on("click", (e) => {
             e.preventDefault();
