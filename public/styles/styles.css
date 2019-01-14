@@ -3,36 +3,36 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    font-size:16px;
-    letter-spacing:.089px;
-    line-height:1.678rem;
+    font-size: 16px;
+    letter-spacing: .089px;
+    line-height: 1.678rem;
 }
 
 nav{
     box-shadow: none;
-    margin-top:8px;
+    margin-top: 8px;
 }
 
 .logo-img {
-    max-width: 80px!important;
-    padding: 8px 0!important;
+    max-width: 80px !important;
+    padding: 8px 0 !important;
 }
 
 .logo-img2 {
-    max-width: 180px!important;
-    padding: 8px 0!important;
+    max-width: 180px !important;
+    padding: 8px 0 !important;
 }
 
-.itemlink{
-    color:black;
+.itemlink {
+    color: black;
 }
 
 .signup-form {
     width: 450px;
     border-radius: 25px;
     background-color: white;
-    padding:32px;
-    margin:auto;
+    padding: 32px;
+    margin: auto;
 }
 
 .box{
@@ -40,7 +40,7 @@ nav{
 }
 
 .box:hover {
-    opacity:.3; 
+    opacity: .3;
 }
 
 .box_pic {
@@ -63,12 +63,12 @@ nav{
 
 .box_color {
     grid-area: ccolor;
-    font-weight:300;
+    font-weight: 300;
 }
 
 .box_height {
     grid-area: height;
-    font-weight:300; 
+    font-weight: 300;
 }
 
 .box_name{
@@ -83,7 +83,7 @@ nav{
 
 .box_occasion {
     grid-area: occasion;
-    font-weight:300;
+    font-weight: 300;
 }
 
 .box_brand{
@@ -96,7 +96,7 @@ nav{
     text-align: center;
 }
 
-.header{
+.header {
     min-height: 128px;
 }
 
