@@ -8,6 +8,9 @@ Up_Style_Clothing provides two main functionality for:
 
 ###### Application is deployed to heroku here: 
 [Up_Style_Clothing](https://up-style-clothing.herokuapp.com)
+>>>>>
+Admin user: test@gmail.com _ Admin password: test
+Client user: mona@gmail.com _ Client password: mona
 
 ###### User Journey Map
 ![User Journey](/public/images/user-journey.png)
